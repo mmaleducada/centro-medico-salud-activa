@@ -72,7 +72,7 @@
             </form>
         </section>
         <section class="container-fluid" id="reseñasPacientes">
-            <div class="container py-3">
+            <div class="container py-3 text-center">
                 <h2 class="text-start">Reseñas de pacientes</h2>
                 <hr>
                 <div class="row justify-content-evenly">
@@ -113,8 +113,36 @@
                         </div>
                     </div>
                 </div>
+                <button type="button" class="btn btn-outline-info my-3" data-bs-toggle="modal" data-bs-target="#modalReseña">
+                    Dejar una reseña
+                </button>
             </div>
         </section>
+        <div class="modal fade" id="modalReseña" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Escribe una reseña</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="text-start">
+                        <div class="mb-3">
+                            <label for="inputNombreReseña" class="form-label">Nombre completo</label>
+                            <input type="text" class="form-control" id="inputNombreReseña" placeholder="Ej: Malena Avila">
+                        </div>
+                        <div class="mb-3">
+                            <label for="textoReseña" class="form-label">Escribe una reseña sobre tu experiencia con el profesional</label>
+                            <textarea class="form-control" id="textoReseña" rows="3"></textarea>
+                        </div>
+                        <div>
+                            <button class="btn btn-outline-warning" type="submit">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
     </main>
     <footer></footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
