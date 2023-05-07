@@ -1,0 +1,28 @@
+#imagencarousel{
+    width: 1000px;
+    height: 800px;
+    object-fit: cover;
+}
+
+#iconosPaginaPrinicpal{
+    height: 300px;
+    background-color: #fcfaee;
+}
+#btnEspecialidad{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+main{
+    background-color: #FFF1BB;
+}
+#backgroundBotones{ 
+       
+    background-color:#fcfaee ;
+}
+#imgCard{
+    width: 100%;
+    height: 56%;
+    object-fit: contain;
+}
