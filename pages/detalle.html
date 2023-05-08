@@ -42,16 +42,10 @@
                     <input type="email" class="form-control" id="inputEmailPaciente" placeholder="Ej: malena@ejemplo.com">
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 py-2">
-                    <label for="date" class="form-label">
-                        Date
-                    </label>
-                    <div class="input-group date" id="datepicker">
-                        <input type="text" class="form-control" id="date"/>
-                        <span class="input-group-append">
-                            <span class="input-group-text bg-light d-block">
-                                <i class="bi bi-calendar"></i>
-                            </span>
-                        </span>
+                    <label for="" class="form-label">Fecha</label>
+                    <input id="fechaTurno" type="date" class="form-control" />
+                    <div id="fechaTurno__feedback" class="invalid-feedback">
+                        Por favor, seleccione una fecha
                     </div>
                 </div>
                 <div class="col-12 col-md-6 col-lg-6 py-2">
@@ -64,6 +58,7 @@
                         <option value="4">16:30</option>
                         <option value="5">17:00</option>
                         <option value="6">17:30</option>
+                        <option value="7">18:00</option>
                     </select>
                 </div>
                 <div class="col-10 col-md-6 col-lg-6 text-center py-2">
