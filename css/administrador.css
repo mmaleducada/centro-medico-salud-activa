@@ -1,0 +1,9 @@
+body {
+    background-color: #fed437;
+    overflow-x: hidden;
+}
+
+#seccion-titulo-administrador {
+    background-color: #FFF1BB;
+    border: 3px solid ;
+}
