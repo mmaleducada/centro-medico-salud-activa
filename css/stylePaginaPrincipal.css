@@ -24,3 +24,11 @@ main{
 #contenedor-nuestro-centro-medico {
     background-color:#fcfaee;
 }
+
+#tamaño-card-novedades {
+    width: 18rem;
+}
+
+#color-container-novedades {
+    background-color: white;
+}
