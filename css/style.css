@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Changa+One&family=Dosis:wght@200;400&family=Edu+NSW+ACT+Foundation:wght@400;500&family=Euphoria+Script&family=Fira+Sans+Condensed:wght@400;500&family=Fira+Sans:ital,wght@0,300;0,400;1,300;1,400&family=Josefin+Sans:wght@300&family=Noto+Sans:ital,wght@0,200;0,300;0,400;1,300;1,400&family=Rajdhani:wght@500&display=swap');
+
+body{
+    font-family: Noto Sans, sans-serif;
+}
+
 .btn-mellow{
     background-color: #FFF1BB;
 }
