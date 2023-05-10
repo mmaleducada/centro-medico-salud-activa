@@ -45,6 +45,9 @@ nav {
     color: grey;
     margin-bottom: 10px;
 }
+.logoNav{
+    max-width: 105px;
+}
 .pie-pagina .grupo-1 .red-social a{
     display: inline-block;
     text-decoration: none;
