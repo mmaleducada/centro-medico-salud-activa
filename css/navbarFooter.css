@@ -46,7 +46,7 @@ nav {
     margin-bottom: 10px;
 }
 .logoNav{
-    max-width: 105px;
+    max-width: 95px;
 }
 .pie-pagina .grupo-1 .red-social a{
     display: inline-block;
@@ -72,6 +72,11 @@ nav {
 }
 .pie-pagina .grupo-2 small{
     font-size: 15px;
+}
+@media screen and (min-width:800px) {
+    #navResponsive{
+        display:;
+    }
 }
 @media screen and (max-width:800px){
     .pie-pagina .grupo-1{
