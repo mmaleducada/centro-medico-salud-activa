@@ -12,11 +12,44 @@
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
 
   <link rel="stylesheet" href="./css/stylePaginaPrincipal.css" />
+  <link rel="stylesheet" href="./css/navbarFooter.css" />
   <title>Pagina Principal</title>
 </head>
 
-<body>
-  <header></header>
+<body class="pt-lg-5">
+  <header>
+    <nav class="navbar fixed-top ">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">Logo a insertar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarPrincipal" aria-controls="navbarPrincipal" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarPrincipal" aria-labelledby="navbarPrincipalLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="navbarPrincipalLabel">Logo principal</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="index.html">Principal</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../centro-medico-salud-activa/pages/acercaDeNosotros.html">Acerca de Nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../centro-medico-salud-activa/pages/loguin.html">Login</a>
+              </li>
+            </ul>
+            <form class="d-flex mt-3" role="search">
+              <input class="form-control me-2" type="search" placeholder="Buscar servicio y/o profesional" aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit">Buscar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
   <main>
     <div id="carouselExampleCaptions" class="carousel slide">
       <div class="carousel-indicators">
