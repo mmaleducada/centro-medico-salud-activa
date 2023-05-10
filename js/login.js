@@ -44,6 +44,11 @@ function mostrarModalLogin(){
 
 function login(e){
     e.preventDefault();
+
+// verificaciones
+/* expression regular - for password "Password must contain 8 characters and at least one number, one letter and one unique character such as !#$%&? "-->
+ ^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? "]).*$
+*/
 }
 
 function logout(){
