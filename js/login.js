@@ -28,9 +28,9 @@ if (existeUsuario) {
     if (window.location.href === webAdmin){
 document.querySelector("main").innerHTML = `<h2 class="text-center">No tienes permisos suficientes para estar en esta página, sera redireccionado a la página principal.</h2>`
     }
-    setTimeout(()=>{
-        window.location.href = window.location.origin;
-    }, 3000);
+    // setTimeout(()=>{
+    //     window.location.href = window.location.origin;
+    // }, 3000);
 }
 }
 
