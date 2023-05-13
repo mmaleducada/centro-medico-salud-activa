@@ -72,8 +72,15 @@
                                     />
                                 </div>
                                 <div class="py-2">
-                                    <label for="inputHorarioDeAtencion" class="form-label">Horario*</label>
-                                    <div class="form-check">
+                                    <label for="inputHorario" class="form-label">Horario*</label>
+                                    <select class="form-select" aria-label="Default select example" id="inputHorario">
+                                        <option value="">Seleccione un horario</option>
+                                        <option value="15:00 - 15:30 - 16:00">15:00 - 15:30 - 16:00</option>
+                                        <option value="16:00 - 16:30 - 17:00">16:00 - 16:30 - 17:00</option>
+                                        <option value="17:00 - 17:30 - 18:00">17:00 - 17:30 - 18:00</option>
+                                        <option value="18:00 - 18:30 - 19:00">18:00 - 18:30 - 19:00</option>
+                                    </select>  
+                                    <!-- <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="15:00" id="horario1" />
                                         <label class="form-check-label" for="horario1">
                                             15:00
@@ -108,16 +115,20 @@
                                         <label class="form-check-label" for="horario6">
                                             18:00
                                         </label>
-                                    </div>
+                                    </div> -->
                                 </div>
-                                <div class="py-2">
+                                <!-- <div class="py-2">
                                     <label for="inputPrecioConsulta" class="form-label">Precio de la consulta (en pesos)</label>
-                                    <input type="number" class="form-control" id="inputPrecioConsulta" placeholder="Ej: 2800"
-                                         />
+                                    <input type="number" class="form-control" id="inputPrecioConsulta" placeholder="Ej: 2800"/>
+                                </div> -->
+                                <div class="py-2">
+                                    <label for="inputPrecio" class="form-label">Precio2 de la consulta (en pesos)</label>
+                                    <input type="number" class="form-control" id="inputPrecio" placeholder="Ej: 2800"/>
                                 </div>
                                 <div class="py-2">
-                                    <label for="inputDescripcion" class="form-label">Breve descripcion del profesional</label>
-                                    <textarea class="form-control" id="inputDescripcion" rows="3" placeholder="Ej: Egresado de la Universidad de Buenos Aires. Tiene una vasta experiencia en la cardiología clínica y en la intervencionista. Trabaja en el Hospital Universitario Austral y en el Hospital Alemán de Buenos Aires. Es un ávido corredor de maratones."></textarea>
+                                    <label for="inputResenia" class="form-label">Reseña*</label>
+                                    <textarea type="text" class="form-control" id="inputResenia"
+                                                placeholder="Ej: Juan Perez" rows="3" ></textarea>
                                 </div>
                                 <div class="alert alert-danger mt-3 d-none" role="alert" id="alerta"></div>
                                 <button type="submit" class="btn btn-primary">Enviar</button>

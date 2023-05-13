@@ -7,11 +7,11 @@ let modalMedico = new bootstrap.Modal(document.getElementById("modalMedicosAdmi"
 let btnModalMedico = document.getElementById('boton-sumar-medico-admi');
 let matricula = document.getElementById('inputMatricula');
 let nombre = document.getElementById('inputNombreCompleto');
+let resenia = document.getElementById('inputResenia');
 let especialidad = document.getElementById('inputEspecialidad');
 let fotografia = document.getElementById('inputFotografia');
-let horario = document.querySelectorAll('input[type="checkbox"]:checked');
-let precio = document.getElementById('inputPrecioConsulta');
-let descripcion = document.getElementById('inputDescripcion');
+let horario = document.getElementById("inputHorario")
+let precio = document.getElementById('inputPrecio');
 let mensajeAlerta = document.getElementById('alerta');
 let listaMedicos = [];
 
@@ -49,26 +49,29 @@ function limpiarForm (){
 }
 
 function crearMedico () {
-    const resumen = resumenValidaciones(nombre.value, especialidad.value, fotografia.value, horario.value, precio.value, descripcion.value);
+    const resumen = resumenValidaciones(nombre.value, resenia.value, especialidad.value, fotografia.value, horario.value, precio.value);
     
     mostrarMensajeError(resumen);
+
 
     if(resumen.length === 0){
         const medicoNuevo = new Medico (
             undefined, 
-            nombre.value, 
+            nombre.value,
             especialidad.value, 
             fotografia.value, 
             horario.value, 
-            precio.value, 
-            descripcion.value
-        );
-        
+            precio.value,
+            resenia.value); 
+
         listaMedicos.push(medicoNuevo);
         
+        
         guardarEnLocalStorage();
+        console.log(medicoNuevo);
 
         limpiarForm();
+
     }
     
 }
