@@ -47,7 +47,7 @@
                                 <div class="py-2">
                                     <label for="exampleFormControlTextarea1" class="form-label">Matricula</label>
                                     <input class="form-control" type="text" placeholder="123" disabled
-                                        id="inputCodigo" />
+                                        id="inputMatricula" />
                                 </div>
                                 <div class="py-2">
                                     <label for="inputNombreCompleto" class="form-label">Nombre completo*</label>
@@ -56,8 +56,14 @@
                                 </div>
                                 <div class="py-2">
                                     <label for="inputEspecialidad" class="form-label">Especialidad*</label>
-                                    <input class="form-control" id="inputEspecialidad" rows="3"
-                                        placeholder="Ej: Cardiologia" required />
+                                    <select class="form-select" aria-label="Default select example" id="inputEspecialidad">
+                                        <option value="">Seleccione una especialidad</option>
+                                        <option value="Cardiología">Cardiología</option>
+                                        <option value="Ginecología">Ginecología</option>
+                                        <option value="Neurología">Neurología</option>
+                                        <option value="Oncología">Oncología</option>
+                                        <option value="Psiquiatría">Psiquiatría</option>
+                                    </select>                                    
                                 </div>
                                 <div class="py-2">
                                     <label for="inputFotografia" class="form-label">Fotografia*</label>
