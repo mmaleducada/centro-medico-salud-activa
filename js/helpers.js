@@ -75,4 +75,5 @@ export function resumenValidaciones(nombre, especialidad, fotografia, precio, de
     if(!validarTexto(descripcion, 10, 200)){
         resumen += "La descripción debe contener entre 10 y 200 caracteres <br>";
     }
+    return resumen;
 }
