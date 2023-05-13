@@ -8,7 +8,7 @@ export default class Medico {
   #descripcion;
 
   constructor(
-    matricula,
+    matricula = uuidv4(),
     nombre,
     especialidad,
     fotografia,

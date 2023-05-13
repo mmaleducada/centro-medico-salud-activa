@@ -68,7 +68,11 @@ function crearMedico () {
         
         
         guardarEnLocalStorage();
-        console.log(medicoNuevo);
+        Swal.fire(
+            "Carga exitosa",
+            "El medico se cargo correctamente en la lista",
+            "success"
+        );
 
         limpiarForm();
 
