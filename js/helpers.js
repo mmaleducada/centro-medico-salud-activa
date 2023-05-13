@@ -55,24 +55,24 @@ if (horariosSeleccionados.length === 0) {
 }
 }
 
-
-/* export function resumenValidaciones(nombre, especialidad, fotografia, horario1, horario2, horario3, horario4, horario5, horario6, precio, descripcion){
+export function resumenValidaciones(nombre, especialidad, fotografia, precio, descripcion){
     let resumen = '';
-    if(! validarCantidadCaracteres(titulo,2, 100)){
-        //si no cumplio la validacion
-        resumen = 'El titulo debe contener entre 2 y 100 caracteres <br>';
-    };
-    if(! validarCantidadCaracteres(descripcion,5, 300)){
-        //si no cumplio la validacion
-        resumen += 'La descripcion debe contener entre 5 y 300 caracteres <br>';
-    };
-    if(! validarURLImagen(imagen)){
-        //si no cumplio la validacion
-        resumen += 'La url debe ser valida y contener una extension (.jpg,.png o .gif) <br>';
-    };
-    if(! validarGenero(genero)){
-        //si no cumplio la validacion
-        resumen += 'Debe seleccionar un genero de la lista <br>';
-    };
-    return resumen;
-} */
+    if(!validarTexto(nombre, 3, 100)){
+        resumen += "El nombre debe contener entre 3 y 100 caracteres <br>";
+    }
+    if(!validarEspecialidad(especialidad)){
+        resumen += "Debe seleccionar una especialidad <br>";
+    }
+    if(!validarFotografia(fotografia)){
+        resumen += "La URL de la fotografía no es válida, debe contener una extensión (.jpg, .png o .gif) <br>";
+    }
+    if(!validarHorario()){
+        resumen += "Debe seleccionar un horario como mínimo <br>";
+    }
+    if(!validarPrecio(precio, 1000, 10000)){
+        resumen += "El precio debe estar entre $1.000 y $10.000 <br>";
+    }
+    if(!validarTexto(descripcion, 10, 200)){
+        resumen += "La descripción debe contener entre 10 y 200 caracteres <br>";
+    }
+}
