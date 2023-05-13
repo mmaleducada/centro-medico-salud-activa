@@ -13,6 +13,7 @@ let horario = document.querySelectorAll('input[type="checkbox"]:checked');
 let precio = document.getElementById('inputPrecioConsulta');
 let descripcion = document.getElementById('inputDescripcion');
 let alert = document.getElementById('alerta');
+let listaMedicos = [];
 
 //manejadores de eventos
 btnModalMedico.addEventListener("click", desplegarModalMedico);
@@ -27,4 +28,22 @@ function desplegarModalMedico() {
 function prepararFormularioMedico(e){
     e.preventDefault();
     crearMedico();
+}
+
+function mostrarMensajeError (resumen) {
+    if(resumen.length > 0) {
+        alert.className = "alert alert-danger mt-3";
+        alert.innerHTML = resumen;
+    } else {
+        alert.className = "alert alert-danger mt-3 d-none";
+    }
+}
+
+function guardarEnLocalStorage() {
+    localStorage.setItem("listaMedicos", JSON.stringify(listaMedicos));
+}
+
+function limpiarForm (){
+    formularioMedico.reset();
+    modalMedico.hide();
 }
