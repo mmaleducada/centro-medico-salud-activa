@@ -1,15 +1,15 @@
 function validarTexto(texto, min, max,) {
-    const patron = /^[a-zA-ZáÁéÉíÍóÓúÚñÑüÜ\s,'-]$/;
-    if(patron.test(texto) && texto.length >= min && texto.length <= max){
-        console.log("El texto es valido");
+    if (texto.length >= min && texto.length <= max) {
+        console.log("la palabra es valida");
         return true;
     } else {
+        console.log("la palabra es incorrecta");
         return false;
     }
 }
 
 function validarEspecialidad (especialidad){
-    if(especialidad.length > 0 && especialidad === "Cardiología",  especialidad === "Ginecología",  especialidad === "Neurología",  especialidad === "Traumatología",  especialidad === "Oncología", especialidad === "Psiquiatría"){
+    if(especialidad.length > 0 && especialidad === "Cardiología" || especialidad === "Ginecología" || especialidad === "Neurología" || especialidad === "Traumatología" || especialidad === "Oncología" || especialidad === "Psiquiatría"){
         console.log("Selecciono una especialidad correctamente");
         return true;
     } else {
@@ -31,7 +31,7 @@ function validarFotografia(fotografia) {
 
 function validarPrecio(precio, min, max) {   
 
-    if (parseInt(precio) >= min && parseInt(precio) <= max) {
+    if (parseInt(precio) >= parseInt(min) && parseInt(precio) <= parseInt(max)) {
         console.log("El precio está dentro del rango válido")
         return true;
     } else {
@@ -44,7 +44,7 @@ function validarHorario(){
     const horariosSeleccionados = document.querySelectorAll('input[type="checkbox"]:checked');
 
 if (horariosSeleccionados.length === 0) {
-  alert('Debe seleccionar al menos un horario.');
+  console.log('Debe seleccionar al menos un horario.');
 } else {
   // Los horarios seleccionados están en el array horariosSeleccionados
   const horarios = [];
@@ -72,8 +72,8 @@ export function resumenValidaciones(nombre, especialidad, fotografia, precio, de
     if(!validarPrecio(precio, 1000, 10000)){
         resumen += "El precio debe estar entre $1.000 y $10.000 <br>";
     }
-    if(!validarTexto(descripcion, 10, 200)){
-        resumen += "La descripción debe contener entre 10 y 200 caracteres <br>";
+    if(!validarTexto(descripcion, 5, 100)){
+        resumen += "La descripcion debe contener entre 3 y 100 caracteres <br>";
     }
     return resumen;
 }

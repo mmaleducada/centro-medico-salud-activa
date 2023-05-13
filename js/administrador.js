@@ -12,7 +12,7 @@ let fotografia = document.getElementById('inputFotografia');
 let horario = document.querySelectorAll('input[type="checkbox"]:checked');
 let precio = document.getElementById('inputPrecioConsulta');
 let descripcion = document.getElementById('inputDescripcion');
-let alert = document.getElementById('alerta');
+let mensajeAlerta = document.getElementById('alerta');
 let listaMedicos = [];
 
 //manejadores de eventos
@@ -32,10 +32,10 @@ function prepararFormularioMedico(e){
 
 function mostrarMensajeError (resumen) {
     if(resumen.length > 0) {
-        alert.className = "alert alert-danger mt-3";
-        alert.innerHTML = resumen;
+        mensajeAlerta.className = "alert alert-danger mt-3";
+        mensajeAlerta.innerHTML = resumen;
     } else {
-        alert.className = "alert alert-danger mt-3 d-none";
+        mensajeAlerta.className = "alert alert-danger mt-3 d-none";
     }
 }
 
@@ -46,4 +46,29 @@ function guardarEnLocalStorage() {
 function limpiarForm (){
     formularioMedico.reset();
     modalMedico.hide();
+}
+
+function crearMedico () {
+    const resumen = resumenValidaciones(nombre.value, especialidad.value, fotografia.value, horario.value, precio.value, descripcion.value);
+    
+    mostrarMensajeError(resumen);
+
+    if(resumen.length === 0){
+        const medicoNuevo = new Medico (
+            undefined, 
+            nombre.value, 
+            especialidad.value, 
+            fotografia.value, 
+            horario.value, 
+            precio.value, 
+            descripcion.value
+        );
+        
+        listaMedicos.push(medicoNuevo);
+        
+        guardarEnLocalStorage();
+
+        limpiarForm();
+    }
+    
 }
