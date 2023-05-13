@@ -1,4 +1,4 @@
-class Medico {
+export default class Medico {
     #horario;
     #matricula;
     #nombre;
