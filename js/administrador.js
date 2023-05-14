@@ -21,11 +21,11 @@ let listaMedicos = [];
 btnModalMedico.addEventListener("click", desplegarModalMedico);
 formularioMedico.addEventListener("submit", prepararFormularioMedico);
 
-//leer la pelicua de el array de pelicua con setiten
+// //leer la pelicua de el array de pelicua con setiten
 let listaMedico = JSON.parse(localStorage.getItem("listaMedicos")) || [];
 
 if (listaMedico.length > 0) {
-  listaMedico = listaMedico.map(
+  listaMedicos = listaMedico.map(
     (medico) =>
       new Medico(
         medico.matricula,
@@ -34,13 +34,13 @@ if (listaMedico.length > 0) {
         medico.fotografia,
         medico.horario,
         medico.precio,
-        medico.resenia
+        medico.descripcion
       )
   );
-}
+}else listaMedicos = []
 console.log(listaMedico); /// viveeee
 
-cargaInicial()
+cargaInicial();
 //definir funcion carga inicial
 function cargaInicial() {
   if (listaMedico.length > 0) {
@@ -50,27 +50,28 @@ function cargaInicial() {
 
 //definir funcion crearfila
 function crearFila(pelicula, fila) {
-    let tablaMedico = document.getElementById("tablaMedico");
-    tablaMedico.innerHTML += `<tr>
+  let tablaMedico = document.getElementById("tablaMedico");
+  tablaMedico.innerHTML += `<tr>
     <th scope="row">${fila}</th>
-
     <td>${pelicula.nombre}</td>
-    <td>${pelicula.nombre}</td>
-    <td class="text-truncate overflow-hidden"></td>
+    <td>${pelicula.especialidad}</td>
     <td>
-      <div class="text-truncate overflow-hidden">${pelicula.fotografia}</div>
+    <div class="text-truncate overflow-hidden">${pelicula.fotografia}</div>
     </td>
-    <td>${pelicula.horario}</td>
+    <td>
+      <div class="text-truncate overflow-hidden">${pelicula.horario}</div>
+    </td>
+    <td class="text-center">$ ${pelicula.precio}</td>
     <td>
       <button class="btn btn-warning ms-1" onclick="prepararPelicula('${pelicula.codigo}')">
-      <i class="bi bi-pencil-square"></i>
+      <i class="bi bi-vector-pen"></i>
       </button>
       <button class="btn btn-danger ms-1" onclick="borrarPelicula('${pelicula.codigo}')">
-      <i class="bi bi-file-x-fill"></i>
+      <i class="bi bi-trash"></i>
       </button>
     </td>
   </tr>`;
-  }
+}
 //corregir el numero de indice
 
 //funciones
