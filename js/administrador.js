@@ -143,4 +143,5 @@ function crearMedico() {
 window.borrarPelicula = (matricula) =>{
   console.log(matricula)
   let posicionMedico = listaMedicos.findeIndex((medico)=>medico.matricula === medico)
+  listaMedicos.splice(posicionMedico,1)
 }
