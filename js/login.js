@@ -1,6 +1,7 @@
 const modalLogin = new bootstrap.Modal(document.querySelector("#modalLogin"));
 const btnIniciarSesion = document.querySelector("#btnIniciarSesion")
 const btnLogin = document.querySelector("#btnLogin");
+const formulario = document.querySelector("form");
 const formularioLogin = document.querySelector("#formLogin");
 const email = document.querySelector("#email");
 const password = document.querySelector("#pass");
@@ -40,7 +41,7 @@ function desplegarModalLogin(){
 
 function login(e){
     e.preventDefault();
-
+formulario.reset();
     if (email.value === usuarioAdmin.value && password.value === usuarioAdmin.password) {
         alert.className = "alert alert-danger mt-3 d-none";
         btnIniciarSesion.innerHTML = "Salir";
