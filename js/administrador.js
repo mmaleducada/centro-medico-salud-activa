@@ -37,44 +37,46 @@ if (listaMedico.length > 0) {
         medico.descripcion
       )
   );
-}else listaMedicos = []
+}
 console.log(listaMedico); /// viveeee
 
 cargaInicial();
+
 //definir funcion carga inicial
+//corregir el numero de indice
 function cargaInicial() {
   if (listaMedico.length > 0) {
-    listaMedico.map((medico, posicion) => crearFila(medico, posicion+1));
+    listaMedico.map((medico, posicion) => crearFila(medico, posicion + 1));
   }
 }
 
 //definir funcion crearfila
-function crearFila(pelicula, fila) {
+function crearFila(medico, fila) {
   let tablaMedico = document.getElementById("tablaMedico");
   tablaMedico.innerHTML += `<tr>
-  <th class="d-flex flex-wrap">${fila}</th>
+  <th scope=class="">${fila}</th>
   <td>
-  <div class="text-truncate overflow-hidden" >${pelicula.nombre}</div>
+  <div class="text-truncate overflow-hidden" >${medico.nombre}</div>
   </td>
-  <td> <div class="text-truncate overflow-hidden">${pelicula.especialidad}</div></td>
+  <td> <div class="text-truncate overflow-hidden">${medico.especialidad}</div></td>
   <td>
-    <div class="text-truncate overflow-hidden">${pelicula.fotografia}</div>
+    <div class="text-truncate overflow-hidden">${medico.fotografia}</div>
   </td>
   <td>
-    <div class="text-truncate overflow-hidden">${pelicula.horario}</div>
+    <div class="text-truncate overflow-hidden">${medico.horario}</div>
   </td>
-  <td class="text-start"> $ ${pelicula.precio}</td>
+  <td class="text-start"> $ ${medico.precio}</td>
   <td>
-    <button class="btn btn-warning ms-1" onclick="prepararPelicula('${pelicula.codigo}')">
+    <button class="btn btn-warning ms-1" onclick="prepararPelicula('${medico.codigo}')">
       <i class="bi bi-vector-pen"></i>
     </button>
-    <button class="btn btn-danger ms-1" onclick="borrarPelicula('${pelicula.codigo}')">
+    <button class="btn btn-danger ms-1" onclick="borrarPelicula('${medico.codigo}')">
       <i class="bi bi-trash"></i>
     </button>
   </td>
 </tr>`;
 }
-//corregir el numero de indice
+
 
 //funciones
 function desplegarModalMedico() {
@@ -130,7 +132,7 @@ function crearMedico() {
 
     guardarEnLocalStorage();
 
-    crearFila(medicoNuevo, listaMedico.length)
+    crearFila(medicoNuevo, listaMedico.length);
 
     Swal.fire(
       "Carga exitosa",
