@@ -142,14 +142,32 @@ function crearMedico() {
 
 window.borrarPelicula = (matricula) => {
   console.log(matricula);
-  let posicionMedico = listaMedicos.findIndex(
-    (medico) => medico.matricula === matricula
-  );
-  listaMedicos.splice(posicionMedico, 1);
-  guardarEnLocalStorage(); //actualizamos localStorage
-  //empiezo a borrar la fila de la tabla
-  tablaMedico.removeChild(tablaMedico.children[posicionMedico]);
-  actualizarIndicesFilas()
+  Swal.fire({
+    title: 'Estas seguro que deseas eliminar el Medico?',
+    text: "Esta accion es irrevertible, estas seguro",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#fed437',
+    cancelButtonColor: '#EF315D',
+    confirmButtonText: 'ELIMINAR!',
+    cancelButtonText: "NO ELIMINAR!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      let posicionMedico = listaMedicos.findIndex(
+        (medico) => medico.matricula === matricula
+      );
+      listaMedicos.splice(posicionMedico, 1);
+      guardarEnLocalStorage(); //actualizamos localStorage
+      //empiezo a borrar la fila de la tabla
+      tablaMedico.removeChild(tablaMedico.children[posicionMedico]);
+      actualizarIndicesFilas();      
+      Swal.fire(
+        'Eliminado',
+        'El medico se borro correctamente.',
+        'success'
+      )
+    }
+  })
 };
 
 function actualizarIndicesFilas() {
