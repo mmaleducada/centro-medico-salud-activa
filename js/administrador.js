@@ -149,4 +149,20 @@ window.borrarPelicula = (matricula) => {
   guardarEnLocalStorage(); //actualizamos localStorage
   //empiezo a borrar la fila de la tabla
   tablaMedico.removeChild(tablaMedico.children[posicionMedico]);
+  actualizarIndicesFilas()
 };
+
+function actualizarIndicesFilas() {
+  // Obtener la tabla de películas
+  let tablaMedico = document.getElementById("tablaMedico");
+  // Obtener todas las filas de la tabla
+  let filas = tablaMedico.getElementsByTagName("tr");
+
+  // Recorrer cada fila de la tabla
+  for (let i = 0; i < filas.length; i++) {
+    // Calcular el nuevo índice sumando 1 al índice actual
+    let indice = i + 1;
+    // Obtener el elemento <th> de la fila actual y actualizar su contenido con el nuevo índice
+    filas[i].getElementsByTagName("th")[0].textContent = indice;
+  }
+}
