@@ -23,10 +23,12 @@ formularioMedico.addEventListener("submit", prepararFormularioMedico);
 
 //leer la pelicua de el array de pelicua con setiten
 let listaMedico = JSON.parse(localStorage.getItem("listaMedicos")) || [];
+
 if (listaMedico.length > 0) {
   listaMedico = listaMedico.map(
     (medico) =>
       new Medico(
+        medico.matricula,
         medico.nombre,
         medico.especialidad,
         medico.fotografia,
@@ -36,17 +38,39 @@ if (listaMedico.length > 0) {
       )
   );
 }
-console.log(listaMedico) /// viveeee 
+console.log(listaMedico); /// viveeee
 
-function cargaInicial(){
-    if(listaMedico.length>0){
-        listaMedico.map((medico,posicion)=>crearFila(medico,posicion+1))
-    }
-
+cargaInicial()
+//definir funcion carga inicial
+function cargaInicial() {
+  if (listaMedico.length > 0) {
+    listaMedico.map((medico, posicion) => crearFila(medico, posicion + 1));
+  }
 }
 
-//definir funcion carga inicial
 //definir funcion crearfila
+function crearFila(pelicula, fila) {
+    let tablaMedico = document.getElementById("tablaMedico");
+    tablaMedico.innerHTML += `<tr>
+    <th scope="row">${fila}</th>
+
+    <td>${pelicula.nombre}</td>
+    <td>${pelicula.nombre}</td>
+    <td class="text-truncate overflow-hidden"></td>
+    <td>
+      <div class="text-truncate overflow-hidden">${pelicula.fotografia}</div>
+    </td>
+    <td>${pelicula.horario}</td>
+    <td>
+      <button class="btn btn-warning ms-1" onclick="prepararPelicula('${pelicula.codigo}')">
+      <i class="bi bi-pencil-square"></i>
+      </button>
+      <button class="btn btn-danger ms-1" onclick="borrarPelicula('${pelicula.codigo}')">
+      <i class="bi bi-file-x-fill"></i>
+      </button>
+    </td>
+  </tr>`;
+  }
 //corregir el numero de indice
 
 //funciones
