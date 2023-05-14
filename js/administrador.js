@@ -38,6 +38,13 @@ if (listaMedico.length > 0) {
 }
 console.log(listaMedico) /// viveeee 
 
+function cargaInicial(){
+    if(listaMedico.length>0){
+        listaMedico.map((medico,posicion)=>crearFila(medico,posicion+1))
+    }
+
+}
+
 //definir funcion carga inicial
 //definir funcion crearfila
 //corregir el numero de indice
