@@ -45,7 +45,7 @@ console.log(listaMedicos); /// viveeee
 function cargaInicial() {
   if (listaMedicos.length > 0) {
     listaMedicos.map((medico, posicion) => crearFila(medico, posicion + 1));
-    console.log(listaMedicos)
+    console.log(listaMedicos);
   }
 }
 
@@ -64,10 +64,10 @@ function crearFila(medico, fila) {
   </td>
   <td>${medico.precio}</td>
   <td>
-    <button class="btn btn-warning" onclick="prepararPelicula('${medico.codigo}')">
+    <button class="btn btn-warning" onclick="EditarMedico('${medico.matricula}')">
       <i class="bi bi-pencil-square"></i>
     </button>
-    <button class="btn btn-danger" onclick="borrarPelicula('${medico.codigo}')">
+    <button class="btn btn-danger" onclick="borrarMedico('${medico.matricula}')">
       <i class="bi bi-x-square"></i>
     </button>
   </td>
@@ -137,5 +137,50 @@ function crearMedico() {
     );
 
     limpiarForm();
+  }
+}
+
+window.borrarMedico = (matricula) => {
+  console.log(matricula);
+  Swal.fire({
+    title: 'Estas seguro que deseas eliminar el Medico?',
+    text: "Esta accion es irrevertible, estas seguro",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#fed437',
+    cancelButtonColor: '#EF315D',
+    confirmButtonText: 'ELIMINAR!',
+    cancelButtonText: "NO ELIMINAR!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      let posicionMedico = listaMedicos.findIndex(
+        (medico) => medico.matricula === matricula
+      );
+      listaMedicos.splice(posicionMedico, 1);
+      guardarEnLocalStorage(); //actualizamos localStorage
+      //empiezo a borrar la fila de la tabla
+      tablaMedico.removeChild(tablaMedico.children[posicionMedico]);
+      actualizarIndicesFilas();      
+      Swal.fire(
+        'Eliminado',
+        'El medico se borro correctamente.',
+        'success'
+      )
+    }
+  })
+};
+
+function actualizarIndicesFilas() {
+  // Obtener la tabla de películas
+  let tablaMedico = document.getElementById("tablaMedico");
+  // Obtener todas las filas de la tabla
+  let filas = tablaMedico.getElementsByTagName("tr");
+
+  // Recorrer cada fila de la tabla
+  for (let i = 0; i < filas.length; i++) {
+    // Calcular el nuevo índice sumando 1 al índice actual
+    let indice = i + 1;
+    // Obtener el elemento <th> de la fila actual y actualizar su contenido con el nuevo índice
+    filas[i].getElementsByTagName("th")[0].textContent = indice;
   }
 }
