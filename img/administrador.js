@@ -19,12 +19,7 @@ let listaMedicos = [];
 btnModalMedico.addEventListener("click", desplegarModalMedico);
 formularioMedico.addEventListener('submit', prepararFormularioMedico);
 
-//leer la pelicua de el array de pelicua con setiten
-let listaMedico = JSON.parse(localStorage.getItem('listaMedicos')) || [];
 
-//definir funcion carga inicial
-//definir funcion crearfila
-//corregir el numero de indice 
 
 //funciones
 function desplegarModalMedico() {
