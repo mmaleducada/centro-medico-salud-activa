@@ -52,16 +52,18 @@ function cargaInicial() {
 function crearFila(pelicula, fila) {
   let tablaMedico = document.getElementById("tablaMedico");
   tablaMedico.innerHTML += `<tr>
-  <th scope="row">${fila}</th>
-  <td>${pelicula.nombre}</td>
-  <td>${pelicula.especialidad}</td>
+  <th class="d-flex flex-wrap">${fila}</th>
   <td>
-    <div class="text-truncate overflow-hidden" style="max-width: 100px">${pelicula.fotografia}</div>
+  <div class="text-truncate overflow-hidden" >${pelicula.nombre}</div>
+  </td>
+  <td> <div class="text-truncate overflow-hidden">${pelicula.especialidad}</div></td>
+  <td>
+    <div class="text-truncate overflow-hidden">${pelicula.fotografia}</div>
   </td>
   <td>
-    <div class="text-truncate overflow-hidden" style="max-width: 100px">${pelicula.horario}</div>
+    <div class="text-truncate overflow-hidden">${pelicula.horario}</div>
   </td>
-  <td class="text-center">$ ${pelicula.precio}</td>
+  <td class="text-start"> $ ${pelicula.precio}</td>
   <td>
     <button class="btn btn-warning ms-1" onclick="prepararPelicula('${pelicula.codigo}')">
       <i class="bi bi-vector-pen"></i>
