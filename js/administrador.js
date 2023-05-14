@@ -64,10 +64,10 @@ function crearFila(medico, fila) {
   </td>
   <td>${medico.precio}</td>
   <td>
-    <button class="btn btn-warning" onclick="prepararPelicula('${medico.codigo}')">
+    <button class="btn btn-warning" onclick="prepararPelicula('${medico.matricula}')">
       <i class="bi bi-pencil-square"></i>
     </button>
-    <button class="btn btn-danger" onclick="borrarPelicula('${medico.codigo}')">
+    <button class="btn btn-danger" onclick="borrarPelicula('${medico.matricula}')">
       <i class="bi bi-x-square"></i>
     </button>
   </td>
@@ -138,4 +138,9 @@ function crearMedico() {
 
     limpiarForm();
   }
+}
+
+window.borrarPelicula = (matricula) =>{
+  console.log(matricula)
+  let posicionMedico = listaMedicos.findeIndex((medico)=>medico.matricula === medico)
 }
