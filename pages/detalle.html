@@ -178,8 +178,7 @@
           <button
             type="button"
             class="btn btn-outline-info my-3"
-            data-bs-toggle="modal"
-            data-bs-target="#modalReseña"
+            id="btnResenia"
           >
             Dejar una reseña
           </button>
@@ -187,7 +186,7 @@
       </section>
       <div
         class="modal fade"
-        id="modalReseña"
+        id="modalResenia"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
@@ -206,7 +205,7 @@
               ></button>
             </div>
             <div class="modal-body">
-              <form class="text-start">
+              <form class="text-start" id="formResenia">
                 <div class="mb-3">
                   <label for="inputNombreReseña" class="form-label"
                     >Nombre completo</label
@@ -214,7 +213,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="inputNombreReseña"
+                    id="inputNombreResenia"
                     placeholder="Ej: Malena Avila"
                   />
                 </div>
@@ -225,10 +224,11 @@
                   >
                   <textarea
                     class="form-control"
-                    id="textoReseña"
+                    id="textoResenia"
                     rows="3"
                   ></textarea>
                 </div>
+                <div class="alert alert-danger mt-3 d-none" role="alert" id="alertaResenia"></div>
                 <div>
                   <button class="btn btn-outline-warning" type="submit">
                     Enviar
@@ -246,5 +246,6 @@
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"
     ></script>
+    <script src="../js/detalle.js" type="module"></script>
   </body>
 </html>

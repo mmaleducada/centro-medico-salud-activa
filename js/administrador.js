@@ -16,9 +16,11 @@ let horario = document.getElementById("inputHorario");
 let precio = document.getElementById("inputPrecio");
 let mensajeAlerta = document.getElementById("alerta");
 
+
 //manejadores de eventos
 btnModalMedico.addEventListener("click", desplegarModalMedico);
 formularioMedico.addEventListener("submit", prepararFormularioMedico);
+
 
 // //leer la pelicua de el array de pelicua con setiten
 let listaMedicos = JSON.parse(localStorage.getItem("listaMedicos")) || [];
@@ -78,10 +80,14 @@ function crearFila(medico, fila) {
 function desplegarModalMedico() {
   modalMedico.show();
 }
+
+
+
 function prepararFormularioMedico(e) {
   e.preventDefault();
   crearMedico();
 }
+
 
 function mostrarMensajeError(resumen) {
   if (resumen.length > 0) {
