@@ -22,4 +22,10 @@ set paciente(paciente){
 set comentario(comentario){
     this.#comentario = comentario;
 }
+toJSON() {
+    return {
+      paciente: this.paciente,
+      comentario: this.comentario      
+    }
+}
 }
