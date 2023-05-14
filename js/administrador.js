@@ -45,7 +45,7 @@ console.log(listaMedicos); /// viveeee
 function cargaInicial() {
   if (listaMedicos.length > 0) {
     listaMedicos.map((medico, posicion) => crearFila(medico, posicion + 1));
-    console.log(listaMedicos)
+    console.log(listaMedicos);
   }
 }
 
@@ -140,8 +140,13 @@ function crearMedico() {
   }
 }
 
-window.borrarPelicula = (matricula) =>{
-  console.log(matricula)
-  let posicionMedico = listaMedicos.findeIndex((medico)=>medico.matricula === medico)
-  listaMedicos.splice(posicionMedico,1)
-}
+window.borrarPelicula = (matricula) => {
+  console.log(matricula);
+  let posicionMedico = listaMedicos.findIndex(
+    (medico) => medico.matricula === matricula
+  );
+  listaMedicos.splice(posicionMedico, 1);
+  guardarEnLocalStorage(); //actualizamos localStorage
+  //empiezo a borrar la fila de la tabla
+  tablaMedico.removeChild(tablaMedico.children[posicionMedico]);
+};
