@@ -52,25 +52,25 @@ function cargaInicial() {
 function crearFila(pelicula, fila) {
   let tablaMedico = document.getElementById("tablaMedico");
   tablaMedico.innerHTML += `<tr>
-    <th scope="row">${fila}</th>
-    <td>${pelicula.nombre}</td>
-    <td>${pelicula.especialidad}</td>
-    <td>
-    <div class="text-truncate overflow-hidden">${pelicula.fotografia}</div>
-    </td>
-    <td>
-      <div class="text-truncate overflow-hidden">${pelicula.horario}</div>
-    </td>
-    <td class="text-center">$ ${pelicula.precio}</td>
-    <td>
-      <button class="btn btn-warning ms-1" onclick="prepararPelicula('${pelicula.codigo}')">
+  <th scope="row">${fila}</th>
+  <td>${pelicula.nombre}</td>
+  <td>${pelicula.especialidad}</td>
+  <td>
+    <div class="text-truncate overflow-hidden" style="max-width: 100px">${pelicula.fotografia}</div>
+  </td>
+  <td>
+    <div class="text-truncate overflow-hidden" style="max-width: 100px">${pelicula.horario}</div>
+  </td>
+  <td class="text-center">$ ${pelicula.precio}</td>
+  <td>
+    <button class="btn btn-warning ms-1" onclick="prepararPelicula('${pelicula.codigo}')">
       <i class="bi bi-vector-pen"></i>
-      </button>
-      <button class="btn btn-danger ms-1" onclick="borrarPelicula('${pelicula.codigo}')">
+    </button>
+    <button class="btn btn-danger ms-1" onclick="borrarPelicula('${pelicula.codigo}')">
       <i class="bi bi-trash"></i>
-      </button>
-    </td>
-  </tr>`;
+    </button>
+  </td>
+</tr>`;
 }
 //corregir el numero de indice
 
