@@ -13,7 +13,17 @@ nav {
 #navbarPrincipal {
   background-color: #fff1bb;
 }
+.btn-mellow{
+    background-color: #FFF1BB;
+}
+.btn-yellow{
+    background-color: #fac393;
 
+}
+.btn-yellow:hover{
+    background-color: black;
+    color: white;
+}
 .pie-pagina {
   width: 100%;
   background-color: #fff1bb;

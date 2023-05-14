@@ -18,12 +18,57 @@
       rel="stylesheet"
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
-    />
-
-    <link rel="stylesheet" href="./css/stylePaginaPrincipal.css" />
-    <link rel="stylesheet" href="./css/navbarFooter.css" />
-    <title>Pagina Principal</title>
-  </head>
+      />
+      
+      <link rel="stylesheet" href="./css/stylePaginaPrincipal.css" />
+      <link rel="stylesheet" href="./css/navbarFooter.css" />
+      <title>Pagina Principal</title>
+    </head>
+    <!-- ventana modal login con Bootstrap  -->
+    <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable container">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="loginModalLabel">Iniciar Sesión</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="formLogin">
+              <div class="mb-3">
+                <label for="email">Email</label>
+                <input id="email" type="email" class="form-control" placeholder="usuario@ejemplo.com" size="30"
+                  maxlength="64" minlength="3" required />
+              </div>
+              <div class="mb-3">
+                <label for="pass">Contraseña (mínimo 8 caracteres)</label>
+                <input id="pass" type="password" class="form-control" maxlength="30" minlength="8" size="8"
+                  autocomplete="current-password" required />
+              </div>
+              <div class="alert alert-danger mt-3 d-none" role="alert" id="alerta"></div>
+          <div class="modal-footer">
+            <button class="btn btn-yellow" type="submit" id="btnLogin">Entrar</button>
+            <button class="btn btn-dark" type="button" data-bs-dismiss="modal">Cerrar</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
+    </div>
+  </li>
+  </ul>
+  <form class="d-flex mt-3 mt-md-0" role="search">
+  <input
+    class="form-control me-2"
+    type="search"
+    placeholder="Buscar servicio y/o profesional"
+    aria-label="Search"
+  />
+  <button class="btn btn-outline-primary ms-md-4" type="submit">
+    Buscar
+  </button>
+  </form>
+  </div>
+  </div>
 
   <body>
     <header>
@@ -84,26 +129,14 @@
                   >
                 </li>
                 <li class="nav-item">
-                  <a
-                    class="nav-link"
-                    href="../centro-medico-salud-activa/pages/loguin.html"
-                    >Iniciar sesion</a
-                  >
-                </li>
-              </ul>
-              <form class="d-flex mt-3 mt-md-0" role="search">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Buscar servicio y/o profesional"
-                  aria-label="Search"
-                />
-                <button class="btn btn-outline-primary ms-md-4" type="submit">
-                  Buscar
-                </button>
-              </form>
-            </div>
-          </div>
+                  <div class="nav-item container">
+                    <button class="btn btn-yellow btn-sm ms-3 w-100" id="btnIniciarSesion" data-bs-toggle="modal"
+                      data-bs-target="modalLogin">Iniciar Sesión</button>
+                  </div>
+                  <div class="nav-item container">
+                    <button class="btn btn-yellow btn-sm ms-3 w-100 d-none" id="#btnAdmin" type="button">Admin</button>
+                  </div>
+              
         </div>
       </nav>
     </header>
@@ -552,5 +585,6 @@
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"
     ></script>
+    <script src="/centro-medico-salud-activa/js/login.js"></script>
   </body>
 </html>
