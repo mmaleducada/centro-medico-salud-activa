@@ -64,10 +64,10 @@ function crearFila(medico, fila) {
   </td>
   <td>${medico.precio}</td>
   <td>
-    <button class="btn btn-warning" onclick="prepararPelicula('${medico.matricula}')">
+    <button class="btn btn-warning" onclick="EditarMedico('${medico.matricula}')">
       <i class="bi bi-pencil-square"></i>
     </button>
-    <button class="btn btn-danger" onclick="borrarPelicula('${medico.matricula}')">
+    <button class="btn btn-danger" onclick="borrarMedico('${medico.matricula}')">
       <i class="bi bi-x-square"></i>
     </button>
   </td>
@@ -140,7 +140,7 @@ function crearMedico() {
   }
 }
 
-window.borrarPelicula = (matricula) => {
+window.borrarMedico = (matricula) => {
   console.log(matricula);
   Swal.fire({
     title: 'Estas seguro que deseas eliminar el Medico?',
