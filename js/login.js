@@ -1,4 +1,5 @@
 const modalLogin = new bootstrap.Modal(document.querySelector("#modalLogin"));
+const btnIniciarSesion = document.querySelector("#btnIniciarSesion")
 const btnLogin = document.querySelector("#btnLogin");
 const formularioLogin = document.querySelector("#formLogin");
 const email = document.querySelector("#email");
@@ -6,7 +7,7 @@ const password = document.querySelector("#pass");
 const alert = document.querySelector("#alert");
 
 // manejadores de eventos
-btnLogin.addEventListener("click", mostrarModalLogin);
+btnIniciarSesion.addEventListener("click", desplegarModalLogin);
 formularioLogin.addEventListener("submit", login);
 
 // admin hardcodeado en el localStorage
@@ -15,16 +16,17 @@ const usuarioAdmin = {
     password: "12345678Aa!",
 };
 
+sessionStorage.setItem("user", JSON.stringify(usuarioAdmin));
 verificarUser();
 
 function verificarUser(){
     let existeUsuario = sessionStorage.getItem("user");
     if (existeUsuario === usuarioAdmin) {
-        btnLogin.innerHTML = "Logout";
+        btnIniciarSesion.innerHTML = "Salir";
         // mostrar boton de administrador 
         document.querySelector("#btnAdmin").classList.remove("d-none");
     }else {
-        btnLogin.innerHTML = "Login";
+        btnIniciarSesion.innerHTML = "Iniciar Sesión";
         let webAdmin = window.location.origin + "/pages/administrador.html";
     // para prevenir hackeos de la pagina admin
     if (window.location.href === webAdmin){
@@ -36,8 +38,8 @@ function verificarUser(){
     }
 }
 
-function mostrarModalLogin(){
-    if (btnLogin.innerHTML === "Login"){
+function desplegarModalLogin(){
+    if (btnIniciarSesion.innerHTML === "Iniciar Sesión"){
         modalLogin.show();
     } else {
         logout();
@@ -51,24 +53,24 @@ function mostrarModalLogin(){
 
 function login(e){
     e.preventDefault();
-if (validarEmail() && validarPassword()) {
+// if (validarEmail() && validarPassword()) {
     if (email.value === usuarioAdmin.value && password.value === usuarioAdmin.password) {
         alert.className = "alert alert-danger mt-3 d-none";
-        btnLogin.innerHTML = "Logout";
+        btnIniciarSesion.innerHTML = "Salir";
         sessionStorage.setItem("user", JSON.stringify(usuarioAdmin));
         document.querySelector("#btnAdmin").classList.remove("d-none");
         modalLogin.hide();
     } else {
-        alert.className = "alert alert-danger mt-3";
+        // alert.className = "alert alert-danger mt-3";
     }
 }
-}
+// }
 
 function logout(){
     sessionStorage.removeItem("user");
-    btnLogin.innerHTML = "Login";
-    // poner cartel con display none que no muestre el boton admin si es un paciente
+    btnIniciarSesion.innerHTML = "Iniciar Sesión";
+    // se vuelve a agregar la clase d-none al boton administrador al cerrar sesion
     document.querySelector("#btnAdmin").classList.add("d-none");
-
+// redireccionamos a la pagina de inicio
 window.location.href = window.location.origin;
 }
