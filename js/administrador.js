@@ -44,7 +44,7 @@ cargaInicial();
 //definir funcion carga inicial
 function cargaInicial() {
   if (listaMedico.length > 0) {
-    listaMedico.map((medico, posicion) => crearFila(medico, posicion + 1));
+    listaMedico.map((medico, posicion) => crearFila(medico, posicion+1));
   }
 }
 
@@ -127,6 +127,9 @@ function crearMedico() {
     listaMedicos.push(medicoNuevo);
 
     guardarEnLocalStorage();
+
+    crearFila(medicoNuevo, listaMedico.length)
+
     Swal.fire(
       "Carga exitosa",
       "El medico se cargo correctamente en la lista",
