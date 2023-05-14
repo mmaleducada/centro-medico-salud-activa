@@ -18,56 +18,82 @@
       rel="stylesheet"
       integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
       crossorigin="anonymous"
-      />
-      
-      <link rel="stylesheet" href="./css/stylePaginaPrincipal.css" />
-      <link rel="stylesheet" href="./css/navbarFooter.css" />
-      <title>Pagina Principal</title>
-    </head>
-    <!-- ventana modal login con Bootstrap  -->
-    <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable container">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="loginModalLabel">Iniciar Sesión</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <form id="formLogin">
-              <div class="mb-3">
-                <label for="email">Email</label>
-                <input id="email" type="email" class="form-control" placeholder="usuario@ejemplo.com" size="30"
-                  maxlength="64" minlength="3" required />
-              </div>
-              <div class="mb-3">
-                <label for="pass">Contraseña (mínimo 8 caracteres)</label>
-                <input id="pass" type="password" class="form-control" maxlength="30" minlength="8" size="8"
-                  autocomplete="current-password" required />
-              </div>
-              <div class="alert alert-danger mt-3 d-none" role="alert" id="alerta"></div>
-          <div class="modal-footer">
-            <button class="btn btn-yellow" type="submit" id="btnLogin">Entrar</button>
-            <button class="btn btn-dark" type="button" data-bs-dismiss="modal">Cerrar</button>
-          </div>
-        </form>
+    />
+
+    <link rel="stylesheet" href="./css/stylePaginaPrincipal.css" />
+    <link rel="stylesheet" href="./css/navbarFooter.css" />
+    <title>Pagina Principal</title>
+  </head>
+  <!-- ventana modal login con Bootstrap  -->
+  <div
+    class="modal fade"
+    id="modalLogin"
+    tabindex="-1"
+    aria-labelledby="loginModalLabel"
+    aria-hidden="true"
+  >
+    <div
+      class="modal-dialog modal-dialog-centered modal-dialog-scrollable container"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="loginModalLabel">Iniciar Sesión</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form id="formLogin">
+            <div class="mb-3">
+              <label for="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                class="form-control"
+                placeholder="usuario@ejemplo.com"
+                size="30"
+                maxlength="64"
+                minlength="3"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="pass">Contraseña (mínimo 8 caracteres)</label>
+              <input
+                id="pass"
+                type="password"
+                class="form-control"
+                maxlength="30"
+                minlength="8"
+                size="8"
+                autocomplete="current-password"
+                required
+              />
+            </div>
+            <div
+              class="alert alert-danger mt-3 d-none"
+              role="alert"
+              id="alerta"
+            ></div>
+            <div class="modal-footer">
+              <button class="btn btn-yellow" type="submit" id="btnLogin">
+                Entrar
+              </button>
+              <button
+                class="btn btn-dark"
+                type="button"
+                data-bs-dismiss="modal"
+              >
+                Cerrar
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-    </div>
-  </li>
-  </ul>
-  <form class="d-flex mt-3 mt-md-0" role="search">
-  <input
-    class="form-control me-2"
-    type="search"
-    placeholder="Buscar servicio y/o profesional"
-    aria-label="Search"
-  />
-  <button class="btn btn-outline-primary ms-md-4" type="submit">
-    Buscar
-  </button>
-  </form>
-  </div>
   </div>
 
   <body>
@@ -111,8 +137,8 @@
                 aria-label="Close"
               ></button>
             </div>
-            <div class="offcanvas-body m-md-">
-              <ul class="navbar-nav justify-content flex-grow-1 pe-3">
+            <div class="offcanvas-body ms-md-4">
+              <ul class="navbar-nav  flex-grow-1 pe-3">
                 <li class="nav-item">
                   <a
                     class="nav-link active"
@@ -121,22 +147,38 @@
                     >Principal</a
                   >
                 </li>
-                <li class="nav-item">
+                <li class="nav-item me-md-5" >
                   <a
                     class="nav-link"
                     href="../centro-medico-salud-activa/pages/acercaDeNosotros.html"
                     >Acerca de Nosotros</a
                   >
                 </li>
-                <li class="nav-item">
-                  <div class="nav-item container">
-                    <button class="btn btn-yellow btn-sm ms-3 w-100" id="btnIniciarSesion" data-bs-toggle="modal"
-                      data-bs-target="modalLogin">Iniciar Sesión</button>
+                <li id="botonNavResponsive"></li>
+                <li class="nav-item align-content-md-end">
+                  <div class="nav-item ">
+                    <button
+                      class="btn btn-yellow btn-sm mt-2 w-100"
+                      id="btnIniciarSesion"
+                      data-bs-toggle="modal"
+                      data-bs-target="modalLogin"
+                    >
+                      Iniciar Sesión
+                    </button>
                   </div>
                   <div class="nav-item container">
-                    <button class="btn btn-yellow btn-sm ms-3 w-100 d-none" id="#btnAdmin" type="button">Admin</button>
+                    <button
+                      class="btn btn-yellow btn-sm ms-3 w-100 d-none"
+                      id="#btnAdmin"
+                      type="button"
+                    >
+                      Admin
+                    </button>
                   </div>
-              
+                </li>
+              </ul>
+              </div>
+          </div>
         </div>
       </nav>
     </header>

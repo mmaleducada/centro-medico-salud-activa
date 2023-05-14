@@ -13,16 +13,15 @@ nav {
 #navbarPrincipal {
   background-color: #fff1bb;
 }
-.btn-mellow{
-    background-color: #FFF1BB;
+.btn-mellow {
+  background-color: #fff1bb;
 }
-.btn-yellow{
-    background-color: #fac393;
-
+.btn-yellow {
+  background-color: #fac393;
 }
-.btn-yellow:hover{
-    background-color: black;
-    color: white;
+.btn-yellow:hover {
+  background-color: black;
+  color: white;
 }
 .pie-pagina {
   width: 100%;
@@ -85,16 +84,22 @@ nav {
   font-size: 15px;
 }
 @media screen and (min-width: 800px) {
-    .pie-pagina .grupo-1 .red-social a{
+  .pie-pagina .grupo-1 .red-social a {
     width: 65px;
     height: 65px;
     line-height: 65px;
   }
 }
 @media screen and (min-width: 800px) {
-    svg{
+  main {
+    margin-top: 60px;
+  }
+  svg {
     width: 35px;
     height: 35px;
+  }
+  #botonNavResponsive{
+    width: 76%;
   }
 }
 @media screen and (max-width: 800px) {
