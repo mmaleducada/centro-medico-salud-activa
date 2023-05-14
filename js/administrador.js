@@ -15,17 +15,16 @@ let fotografia = document.getElementById("inputFotografia");
 let horario = document.getElementById("inputHorario");
 let precio = document.getElementById("inputPrecio");
 let mensajeAlerta = document.getElementById("alerta");
-let listaMedicos = [];
 
 //manejadores de eventos
 btnModalMedico.addEventListener("click", desplegarModalMedico);
 formularioMedico.addEventListener("submit", prepararFormularioMedico);
 
 // //leer la pelicua de el array de pelicua con setiten
-let listaMedico = JSON.parse(localStorage.getItem("listaMedicos")) || [];
+let listaMedicos = JSON.parse(localStorage.getItem("listaMedicos")) || [];
 
-if (listaMedico.length > 0) {
-  listaMedicos = listaMedico.map(
+if (listaMedicos.length > 0) {
+  listaMedicos = listaMedicos.map(
     (medico) =>
       new Medico(
         medico.matricula,
@@ -38,15 +37,15 @@ if (listaMedico.length > 0) {
       )
   );
 }
-console.log(listaMedico); /// viveeee
-
 cargaInicial();
+console.log(listaMedicos); /// viveeee
 
-//definir funcion carga inicial
-//corregir el numero de indice
+// definir funcion carga inicial
+// corregir el numero de indice
 function cargaInicial() {
-  if (listaMedico.length > 0) {
-    listaMedico.map((medico, posicion) => crearFila(medico, posicion + 1));
+  if (listaMedicos.length > 0) {
+    listaMedicos.map((medico, posicion) => crearFila(medico, posicion + 1));
+    console.log(listaMedicos)
   }
 }
 
@@ -54,29 +53,26 @@ function cargaInicial() {
 function crearFila(medico, fila) {
   let tablaMedico = document.getElementById("tablaMedico");
   tablaMedico.innerHTML += `<tr>
-  <th scope=class="">${fila}</th>
+  <th scope="row">${fila}</th>
+  <td>${medico.nombre}</td>
+  <td>${medico.especialidad}</td>
   <td>
-  <div class="text-truncate overflow-hidden" >${medico.nombre}</div>
-  </td>
-  <td> <div class="text-truncate overflow-hidden">${medico.especialidad}</div></td>
-  <td>
-    <div class="text-truncate overflow-hidden">${medico.fotografia}</div>
+  <div class="text-truncate overflow-hidden">${medico.fotografia}</div>
   </td>
   <td>
-    <div class="text-truncate overflow-hidden">${medico.horario}</div>
+  <div class="text-truncate overflow-hidden">${medico.horario}</div>
   </td>
-  <td class="text-start"> $ ${medico.precio}</td>
+  <td>${medico.precio}</td>
   <td>
-    <button class="btn btn-warning ms-1" onclick="prepararPelicula('${medico.codigo}')">
-      <i class="bi bi-vector-pen"></i>
+    <button class="btn btn-warning" onclick="prepararPelicula('${medico.codigo}')">
+      <i class="bi bi-pencil-square"></i>
     </button>
-    <button class="btn btn-danger ms-1" onclick="borrarPelicula('${medico.codigo}')">
-      <i class="bi bi-trash"></i>
+    <button class="btn btn-danger" onclick="borrarPelicula('${medico.codigo}')">
+      <i class="bi bi-x-square"></i>
     </button>
   </td>
 </tr>`;
 }
-
 
 //funciones
 function desplegarModalMedico() {
@@ -132,7 +128,7 @@ function crearMedico() {
 
     guardarEnLocalStorage();
 
-    crearFila(medicoNuevo, listaMedico.length);
+    crearFila(medicoNuevo, listaMedicos.length);
 
     Swal.fire(
       "Carga exitosa",
