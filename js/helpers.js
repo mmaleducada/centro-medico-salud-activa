@@ -9,7 +9,7 @@ function validarTexto(texto, min, max) {
 }
 
 function validarEspecialidad (especialidad){
-    if(especialidad.length > 0 && especialidad === "Cardiología" || especialidad === "Ginecología" || especialidad === "Neurología" || especialidad === "Traumatología" || especialidad === "Oncología" || especialidad === "Psiquiatría"){
+    if(especialidad.length > 0 && especialidad === "Cardiologia" || especialidad === "Ginecologia" || especialidad === "Neurologia" || especialidad === "Traumatologia" || especialidad === "Oncologia" || especialidad === "Psiquiatria"){
         console.log("Selecciono una especialidad correctamente");
         return true;
     } else {
