@@ -17,12 +17,14 @@ const usuarioAdmin = {
 
 sessionStorage.setItem("user", JSON.stringify(usuarioAdmin));
 verificarUser();
+console.log(window.location.href);
+console.log(window.location.origin);
 
 function verificarUser(){
     let existeUsuario = sessionStorage.getItem("user");
     if (existeUsuario) {
-        // btnIniciarSesion.innerHTML = "Salir";
-        // btnAdmin.remove("d-none");
+        btnIniciarSesion.innerHTML = "Salir";
+        btnAdmin.classList.remove("d-none");
         // TODO agregar validaciones
     }else {
         btnIniciarSesion.innerHTML = "Iniciar Sesión";
@@ -30,6 +32,9 @@ function verificarUser(){
         if (window.location.href === webAdmin){
             document.querySelector("main").innerHTML = `<h2 class="text-center">No tienes permisos suficientes para estar en esta página, sera redireccionado a la página principal.</h2>`
         }
+        setTimeout( ()=>{    
+            window.location.href = window.location.origin;
+        }, 3000)
     }
 }
 
@@ -57,10 +62,9 @@ function login(e){
     // }
     
     function logout(){
-        if (btnIniciarSesion.innerHTML = "Salir"){
             sessionStorage.removeItem("user");
             btnIniciarSesion.innerHTML = "Iniciar Sesión";
-    document.querySelector("#btnAdmin").classList.add("d-none");
-    window.location.href = window.location.origin;
-}
-}
+            btnAdmin.classList.add("d-none");
+        window.location.href = window.location.origin;
+            }
+        
