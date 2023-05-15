@@ -29,9 +29,9 @@ function verificarUser(){
        // TODO agregar validaciones
     }else {
         btnIniciarSesion.innerHTML = "Iniciar Sesión";
-        let webAdmin = window.location.origin + "/pages/administrador.html";
+        let webAdmin = window.location.origin+ "/pages/administrador.html";
         if (window.location.href === webAdmin){
-            document.querySelector("main").innerHTML = `<h2 class="text-center">No tienes permisos suficientes para estar en esta página, sera redireccionado a la página principal.</h2>`
+            document.querySelector("main").innerHTML = `<h2 class="text-center bg-dark text-light">No tienes permisos suficientes para estar en esta página, sera redireccionado a la página principal.</h2>`
         }
         setTimeout( ()=>{    
             window.location.href = window.location.origin;
@@ -56,10 +56,8 @@ function login(e){
                 console.log(`hola admin`);
                 btnIniciarSesion.innerHTML = "Salir";
                 document.querySelector("#btnAdmin").classList.add("d-none");
-                // btnAdmin.classList.remove("d-none");
                 modalLogin.hide();
-        } else {
-        }
+        } 
     }   
     // }
     
