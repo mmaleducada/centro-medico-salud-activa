@@ -100,21 +100,23 @@
       </div>
       <div>
         <a href="./pages/error404.html">
-          <img class="imagenEspecialidad" src="./img/psico.PNG" alt="" />
+          <img class="imagenEspecialidad" src="./img/psico.PNG" alt="Psiquiatría" />
         </a>
       </div>
     </div>
-    <div class="container py-5 d-flex align-items-end align-items-stretch">
-      <select class="form-select form-select-lg" aria-label=".form-select-lg example">
-        <option selected>Elija su Especialidad:</option>
-        <option value="1">Cardiología</option>
-        <option value="2">Ginecología</option>
-        <option value="3">Neurología</option>
-        <option value="3">Traumatología</option>
-        <option value="3">Oncología</option>
-        <option value="3">Psiquiatría</option>
+    <div class="mx-3 mx-md-auto py-3 d-flex align-items-stretch flex-column flex-md-row contenedorBuscador">
+      <select class="form-select form-select-lg my-2 my-lg-1 mx-md-2 text-center" aria-label=".form-select-lg example"
+        id="selectFiltro">
+        <option selected>Elija especialidad:</option>
+        <option value="cardiologia">Cardiologia</option>
+        <option value="ginecologia">Ginecologia</option>
+        <option value="neurología">Neurología</option>
+        <option value="traumatología">Traumatología</option>
+        <option value="oncología">Oncología</option>
+        <option value="psiquiatría">Psiquiatría</option>
       </select>
-      <input class="form-control" type="text" placeholder="Buscar Por Medico" aria-label="default input example" />
+      <input class="form-control my-2 text-center my-lg-1 mx-md-2" type="text" placeholder="Buscar Por Medico"
+        aria-label="default input example" id="inputBuscar" />
     </div>
     <section class="container">
       <div class="row p-5 justify-content-between">
