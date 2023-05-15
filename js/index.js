@@ -64,7 +64,7 @@ function crearCard (medico) {
 	let contenedorCards = document.getElementById("contenedor-card-medicos");
 	contenedorCards.innerHTML += `<div class="card cardMedico mt-3 mx-auto border-1 filtrado">
 	<img src="${medico.fotografia}" class="card-img-top imagenMedico"
-	  alt=" ${medico.nombre} ">
+	  alt="${medico.nombre}">
 	<div class="card-body py-0 my-3 d-flex flex-column justify-content-between">
 	  <div>
 		<h3 class="card-title">${medico.nombre}</h3>
