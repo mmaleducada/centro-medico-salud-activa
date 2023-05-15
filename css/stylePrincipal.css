@@ -1,0 +1,75 @@
+.imagencarousel {
+    width: 100vw;
+    /* height: 800px; */
+    max-height: 80vh;
+    object-fit: cover;
+}
+
+main {
+    background-color: #FFF1BB;
+}
+
+.contenedorImgEspecialidades {
+    background-color: #F5F0E2;
+}
+
+.descripcionCardNovedades {
+    min-height: 70px;
+}
+
+.contenedorBuscador {
+    max-width: 600px;
+}
+
+.contenedorCardsMedicos {
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.cardMedico {
+    max-width: 250px;
+    flex-wrap: wrap;
+}
+
+.imagenMedico {
+    max-height: 200px;
+    max-width: 250px;
+    object-fit: cover;
+}
+
+.card:hover {
+    transition: .1s;
+    transform: scale(1.005);
+}
+
+.oculto,
+.imgOculta,
+.escondido {
+    display: none;
+}
+
+#imagenDoctorNoEncontrado {
+    max-width: 90%;
+    border-radius: 15px;
+}
+
+#backgroundBotones {
+    background-color: #fcfaee;
+}
+
+#color-contenedor-iconos-index {
+    background-color: #f5f0e2;
+}
+
+#imagen-centro-medico-index {
+    width: 90%;
+    object-fit: cover;
+}
+
+#contenedor-nuestro-centro-medico {
+    background-color: #fcfaee;
+}
+
+#color-container-novedades {
+    background-color: white;
+}
