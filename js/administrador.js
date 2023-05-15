@@ -74,6 +74,8 @@ function crearFila(medico, fila) {
 </tr>`;
 }
 
+
+
 //funciones
 function desplegarModalMedico() {
   modalMedico.show();
