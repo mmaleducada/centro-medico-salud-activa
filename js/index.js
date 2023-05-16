@@ -1,5 +1,4 @@
 const inputBuscar = document.querySelector('#inputBuscar');
-const medicosFiltrados = document.querySelectorAll('.cardMedico');
 const medicoNoEncontrado = document.querySelector('#imagenDoctorNoEncontrado');
 const filtro = document.querySelector('#selectFiltro');
 let listaMedicos = JSON.parse(localStorage.getItem("listaMedicos")) || [];
@@ -7,6 +6,8 @@ let listaMedicos = JSON.parse(localStorage.getItem("listaMedicos")) || [];
 filtro.addEventListener('change', filtrador);
 
 function filtrador() {
+	const medicosFiltrados = document.querySelectorAll('.cardMedico');
+
 	inputBuscar.value = '';
 
 	medicosFiltrados.forEach(medico => {
@@ -15,7 +16,7 @@ function filtrador() {
 				medico.classList.remove('oculto');
 				medico.classList.add('filtrado')
 			})
-		} else if (filtro.value === medico.children[1].children[0].children[1].innerHTML.toLowerCase()) {
+		} else if (filtro.value === medico.children[1].children[0].children[1].innerHTML) {
 			medico.classList.add('filtrado');
 			medico.classList.remove('oculto');
 		} else {
@@ -26,7 +27,7 @@ function filtrador() {
 };
 
 document.addEventListener('keyup', e => {
-
+	const medicosFiltrados = document.querySelectorAll('.cardMedico');
 	const hayFiltracion = document.querySelectorAll('.filtrado');
 
 	if (e.key === 'Escape') e.target.value = '';
@@ -80,6 +81,5 @@ function crearCard (medico) {
   </div>`
 }
 function navegarPaginaDetalle(matricula){
-    console.log(matricula);
     window.location.href = window.location.origin+'/pages/detalle.html?matricula='+matricula;
 }
