@@ -15,6 +15,7 @@ let fotografia = document.getElementById("inputFotografia");
 let horario = document.getElementById("inputHorario");
 let precio = document.getElementById("inputPrecio");
 let mensajeAlerta = document.getElementById("alerta");
+let altaDeMedico = true; // esta variable le permite al formulario saber que tiene que hacer. Si la variable esta en TRUE, debe crear un nuevo medico en la fila. Si esta en FALSE, debe editar el medico elegido.
 
 //manejadores de eventos
 btnModalMedico.addEventListener("click", desplegarModalMedico);
@@ -38,7 +39,7 @@ if (listaMedicos.length > 0) {
   );
 }
 cargaInicial();
-console.log(listaMedicos); /// viveeee
+console.log(listaMedicos);
 
 // funciones
 function cargaInicial() {
@@ -77,7 +78,11 @@ function desplegarModalMedico() {
 }
 function prepararFormularioMedico(e) {
   e.preventDefault();
-  crearMedico();
+  if (altaDeMedico === true){
+    crearMedico();
+  } else {
+    editarMedico();
+  }
 }
 
 function mostrarMensajeError(resumen) {
@@ -189,5 +194,35 @@ window.prepararMedico = (matriculaMedico) => {
   precio.value = medicoElegido.precio;
   descripcion.value = medicoElegido.descripcion;
 
+  altaDeMedico = false;
   modalMedico.show();
+}
+
+function editarMedico() {
+  console.log("aqui tengo que editar");
+  let lugarMedico2 = listaMedicos.findIndex((medico) => medico.matricula === matricula.value);
+
+  const resumen = resumenValidaciones(
+    nombre.value,
+    descripcion.value,
+    especialidad.value,
+    fotografia.value,
+    horario.value,
+    precio.value
+  );
+
+  mostrarMensajeError(resumen);
+
+  if (resumen.length === 0){
+    listaMedicos[lugarMedico2].nombre = nombre.value;
+    listaMedicos[lugarMedico2].especialidad = especialidad.value;
+    listaMedicos[lugarMedico2].fotografia = fotografia.value;
+    listaMedicos[lugarMedico2].horario = horario.value;
+    listaMedicos[lugarMedico2].precio = precio.value;
+    listaMedicos[lugarMedico2].descripcion = descripcion.value;
+
+    guardarEnLocalStorage();
+
+    
+  }
 }
