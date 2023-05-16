@@ -9,20 +9,19 @@ let modalMedico = new bootstrap.Modal(
 let btnModalMedico = document.getElementById("boton-sumar-medico-admi");
 let matricula = document.getElementById("inputMatricula");
 let nombre = document.getElementById("inputNombreCompleto");
-let resenia = document.getElementById("inputResenia");
+let descripcion = document.getElementById("inputResenia");
 let especialidad = document.getElementById("inputEspecialidad");
 let fotografia = document.getElementById("inputFotografia");
 let horario = document.getElementById("inputHorario");
 let precio = document.getElementById("inputPrecio");
 let mensajeAlerta = document.getElementById("alerta");
-
+let altaDeMedico = true; // esta variable le permite al formulario saber que tiene que hacer. Si la variable esta en TRUE, debe crear un nuevo medico en la fila. Si esta en FALSE, debe editar el medico elegido.
 
 //manejadores de eventos
 btnModalMedico.addEventListener("click", desplegarModalMedico);
 formularioMedico.addEventListener("submit", prepararFormularioMedico);
 
 
-// //leer la pelicua de el array de pelicua con setiten
 let listaMedicos = JSON.parse(localStorage.getItem("listaMedicos")) || [];
 
 if (listaMedicos.length > 0) {
@@ -40,10 +39,9 @@ if (listaMedicos.length > 0) {
   );
 }
 cargaInicial();
-console.log(listaMedicos); /// viveeee
+console.log(listaMedicos);
 
-// definir funcion carga inicial
-// corregir el numero de indice
+// funciones
 function cargaInicial() {
   if (listaMedicos.length > 0) {
     listaMedicos.map((medico, posicion) => crearFila(medico, posicion + 1));
@@ -51,12 +49,11 @@ function cargaInicial() {
   }
 }
 
-//definir funcion crearfila
 function crearFila(medico, fila) {
   let tablaMedico = document.getElementById("tablaMedico");
   tablaMedico.innerHTML += `<tr>
   <th scope="row">${fila}</th>
-  <td>${medico.nombre}</td>
+  <td><div class="text-truncate overflow-hidden">${medico.nombre}</div></td>
   <td>${medico.especialidad}</td>
   <td>
   <div class="text-truncate overflow-hidden">${medico.fotografia}</div>
@@ -66,7 +63,7 @@ function crearFila(medico, fila) {
   </td>
   <td>${medico.precio}</td>
   <td>
-    <button class="btn btn-warning" onclick="EditarMedico('${medico.matricula}')">
+    <button class="btn btn-warning" onclick="prepararMedico('${medico.matricula}')">
       <i class="bi bi-pencil-square"></i>
     </button>
     <button class="btn btn-danger" onclick="borrarMedico('${medico.matricula}')">
@@ -76,18 +73,19 @@ function crearFila(medico, fila) {
 </tr>`;
 }
 
-//funciones
 function desplegarModalMedico() {
+  limpiarForm();
+  altaDeMedico = true;
   modalMedico.show();
 }
-
-
-
 function prepararFormularioMedico(e) {
   e.preventDefault();
-  crearMedico();
+  if (altaDeMedico === true){
+    crearMedico();
+  } else {
+    editarMedico();
+  }
 }
-
 
 function mostrarMensajeError(resumen) {
   if (resumen.length > 0) {
@@ -110,7 +108,7 @@ function limpiarForm() {
 function crearMedico() {
   const resumen = resumenValidaciones(
     nombre.value,
-    resenia.value,
+    descripcion.value,
     especialidad.value,
     fotografia.value,
     horario.value,
@@ -127,7 +125,7 @@ function crearMedico() {
       fotografia.value,
       horario.value,
       precio.value,
-      resenia.value
+      descripcion.value
     );
 
     listaMedicos.push(medicoNuevo);
@@ -163,8 +161,7 @@ window.borrarMedico = (matricula) => {
         (medico) => medico.matricula === matricula
       );
       listaMedicos.splice(posicionMedico, 1);
-      guardarEnLocalStorage(); //actualizamos localStorage
-      //empiezo a borrar la fila de la tabla
+      guardarEnLocalStorage(); 
       tablaMedico.removeChild(tablaMedico.children[posicionMedico]);
       actualizarIndicesFilas();      
       Swal.fire(
@@ -177,16 +174,79 @@ window.borrarMedico = (matricula) => {
 };
 
 function actualizarIndicesFilas() {
-  // Obtener la tabla de películas
+
   let tablaMedico = document.getElementById("tablaMedico");
-  // Obtener todas las filas de la tabla
+
   let filas = tablaMedico.getElementsByTagName("tr");
 
-  // Recorrer cada fila de la tabla
   for (let i = 0; i < filas.length; i++) {
-    // Calcular el nuevo índice sumando 1 al índice actual
     let indice = i + 1;
-    // Obtener el elemento <th> de la fila actual y actualizar su contenido con el nuevo índice
     filas[i].getElementsByTagName("th")[0].textContent = indice;
+  }
+}
+
+window.prepararMedico = (matriculaMedico) => {
+  const medicoElegido = listaMedicos.find((medico)=> medico.matricula === matriculaMedico);
+
+  matricula.value = medicoElegido.matricula;
+  nombre.value = medicoElegido.nombre;
+  especialidad.value = medicoElegido.especialidad;
+  fotografia.value = medicoElegido.fotografia;
+  horario.value = medicoElegido.horario;
+  precio.value = medicoElegido.precio;
+  descripcion.value = medicoElegido.descripcion;
+
+  altaDeMedico = false;
+  modalMedico.show();
+}
+
+function editarMedico() {
+  console.log("aqui tengo que editar");
+  let lugarMedico2 = listaMedicos.findIndex((medico) => medico.matricula === matricula.value);
+
+  const resumen = resumenValidaciones(
+    nombre.value,
+    descripcion.value,
+    especialidad.value,
+    fotografia.value,
+    horario.value,
+    precio.value
+  );
+
+  mostrarMensajeError(resumen);
+// edito los valores
+  if (resumen.length === 0){
+    listaMedicos[lugarMedico2].nombre = nombre.value;
+    listaMedicos[lugarMedico2].especialidad = especialidad.value;
+    listaMedicos[lugarMedico2].fotografia = fotografia.value;
+    listaMedicos[lugarMedico2].horario = horario.value;
+    listaMedicos[lugarMedico2].precio = precio.value;
+    listaMedicos[lugarMedico2].descripcion = descripcion.value;
+// actualizar localstorage
+    guardarEnLocalStorage();
+// actualizar fila
+    let tablaMedico = document.getElementById("tablaMedico");
+    console.log(tablaMedico.children[lugarMedico2]);
+    let celdaNombre = (tablaMedico.children[lugarMedico2]).children[1].children[0];
+    let celdaEspecialidad = (tablaMedico.children[lugarMedico2]).children[2];
+    let celdaFotografia = (tablaMedico.children[lugarMedico2]).children[3].children[0];
+    let celdaHorario = (tablaMedico.children[lugarMedico2]).children[4].children[0];
+    let celdaPrecio = (tablaMedico.children[lugarMedico2]).children[5];
+
+    celdaNombre.innerHTML = nombre.value;
+    celdaEspecialidad.innerHTML = especialidad.value;
+    celdaFotografia.innerHTML = fotografia.value;
+    celdaHorario.innerHTML = horario.value;
+    celdaPrecio.innerHTML = precio.value;
+
+    Swal.fire(
+      "Modificación exitosa",
+      "El medico se modifico correctamente en la lista",
+      "success"
+    );
+
+    //limpio el formulario
+    limpiarForm();
+    modalMedico.hide();
   }
 }
