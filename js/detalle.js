@@ -102,3 +102,38 @@ function limpiarFormulario() {
   formResenia.reset();
   modalResenia.hide();
 }
+//LOGICA PARA LA CARD DEL MEDICO
+
+const parametroURL = new URLSearchParams(window.location.search);
+console.log(parametroURL.get('matricula'));
+let listaMedicos = JSON.parse(localStorage.getItem("listaMedicos")) || [];
+
+const detalleMedico = listaMedicos.find((medico)=>medico.matricula === parametroURL.get('matricula'));
+
+let seccionCardDetalle = document.getElementById('seccionCardDetalle');
+seccionCardDetalle.innerHTML = `<div class="row">
+<div class="col-12 col-md-3 col-lg-3">
+  <img
+    src="${detalleMedico.fotografia}"
+    class="img-fluid rounded-start"
+    alt="${detalleMedico.nombre}"
+  />
+</div>
+<div class="col-12 col-md-9 col-lg-9 row">
+  <div>
+    <h2 class="card-title col-12 align-self-start">
+      ${detalleMedico.nombre}
+    </h2>
+    <h5 class="col-12 align-self-start">${detalleMedico.especialidad}</h5>
+  </div>
+  <p class="card-text col-12 align-self-center">
+    ${detalleMedico.descripcion}
+  </p>
+  <p class="card-text col-12">
+    <small class="text-body-secondary"
+      >Precio de la consulta: $${detalleMedico.precio}</small
+    >
+  </p>
+</div>
+</div>
+`
