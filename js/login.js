@@ -25,7 +25,7 @@ function verificarUser(){
     let existeUsuario = sessionStorage.getItem("user");
     if (existeUsuario) {
         btnIniciarSesion.innerHTML = "Salir";
-        document.querySelector("#btnAdmin").classList.add("d-none");
+        btnAdmin.classList.remove("d-none");
        // TODO agregar validaciones
     }else {
         btnIniciarSesion.innerHTML = "Iniciar Sesión";
@@ -55,7 +55,7 @@ function login(e){
         if (email.value === usuarioAdmin.value && password.value === usuarioAdmin.password) {
                 console.log(`hola admin`);
                 btnIniciarSesion.innerHTML = "Salir";
-                document.querySelector("#btnAdmin").classList.add("d-none");
+                btnAdmin.classList.remove("d-none");
                 modalLogin.hide();
         } 
     }   
@@ -65,7 +65,7 @@ function login(e){
         modalLogin.hide();
             sessionStorage.removeItem("user");
             btnIniciarSesion.innerHTML = "Iniciar Sesión";
-            document.querySelector("#btnAdmin").classList.add("d-none");
+            btnAdmin.classList.add("d-none");
         window.location.href = window.location.origin;
             }
         
