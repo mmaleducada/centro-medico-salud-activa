@@ -53,7 +53,7 @@ function crearFila(medico, fila) {
   let tablaMedico = document.getElementById("tablaMedico");
   tablaMedico.innerHTML += `<tr>
   <th scope="row">${fila}</th>
-  <td>${medico.nombre}</td>
+  <td><div class="text-truncate overflow-hidden">${medico.nombre}</div></td>
   <td>${medico.especialidad}</td>
   <td>
   <div class="text-truncate overflow-hidden">${medico.fotografia}</div>
@@ -74,6 +74,8 @@ function crearFila(medico, fila) {
 }
 
 function desplegarModalMedico() {
+  limpiarForm();
+  altaDeMedico = true;
   modalMedico.show();
 }
 function prepararFormularioMedico(e) {
@@ -212,7 +214,7 @@ function editarMedico() {
   );
 
   mostrarMensajeError(resumen);
-
+// edito los valores
   if (resumen.length === 0){
     listaMedicos[lugarMedico2].nombre = nombre.value;
     listaMedicos[lugarMedico2].especialidad = especialidad.value;
@@ -220,9 +222,31 @@ function editarMedico() {
     listaMedicos[lugarMedico2].horario = horario.value;
     listaMedicos[lugarMedico2].precio = precio.value;
     listaMedicos[lugarMedico2].descripcion = descripcion.value;
-
+// actualizar localstorage
     guardarEnLocalStorage();
+// actualizar fila
+    let tablaMedico = document.getElementById("tablaMedico");
+    console.log(tablaMedico.children[lugarMedico2]);
+    let celdaNombre = (tablaMedico.children[lugarMedico2]).children[1].children[0];
+    let celdaEspecialidad = (tablaMedico.children[lugarMedico2]).children[2];
+    let celdaFotografia = (tablaMedico.children[lugarMedico2]).children[3].children[0];
+    let celdaHorario = (tablaMedico.children[lugarMedico2]).children[4].children[0];
+    let celdaPrecio = (tablaMedico.children[lugarMedico2]).children[5];
 
-    
+    celdaNombre.innerHTML = nombre.value;
+    celdaEspecialidad.innerHTML = especialidad.value;
+    celdaFotografia.innerHTML = fotografia.value;
+    celdaHorario.innerHTML = horario.value;
+    celdaPrecio.innerHTML = precio.value;
+
+    Swal.fire(
+      "Modificación exitosa",
+      "El medico se modifico correctamente en la lista",
+      "success"
+    );
+
+    //limpio el formulario
+    limpiarForm();
+    modalMedico.hide();
   }
 }
