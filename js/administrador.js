@@ -9,7 +9,7 @@ let modalMedico = new bootstrap.Modal(
 let btnModalMedico = document.getElementById("boton-sumar-medico-admi");
 let matricula = document.getElementById("inputMatricula");
 let nombre = document.getElementById("inputNombreCompleto");
-let resenia = document.getElementById("inputResenia");
+let descripcion = document.getElementById("inputResenia");
 let especialidad = document.getElementById("inputEspecialidad");
 let fotografia = document.getElementById("inputFotografia");
 let horario = document.getElementById("inputHorario");
@@ -20,7 +20,7 @@ let mensajeAlerta = document.getElementById("alerta");
 btnModalMedico.addEventListener("click", desplegarModalMedico);
 formularioMedico.addEventListener("submit", prepararFormularioMedico);
 
-// //leer la pelicua de el array de pelicua con setiten
+
 let listaMedicos = JSON.parse(localStorage.getItem("listaMedicos")) || [];
 
 if (listaMedicos.length > 0) {
@@ -40,8 +40,7 @@ if (listaMedicos.length > 0) {
 cargaInicial();
 console.log(listaMedicos); /// viveeee
 
-// definir funcion carga inicial
-// corregir el numero de indice
+// funciones
 function cargaInicial() {
   if (listaMedicos.length > 0) {
     listaMedicos.map((medico, posicion) => crearFila(medico, posicion + 1));
@@ -49,7 +48,6 @@ function cargaInicial() {
   }
 }
 
-//definir funcion crearfila
 function crearFila(medico, fila) {
   let tablaMedico = document.getElementById("tablaMedico");
   tablaMedico.innerHTML += `<tr>
@@ -64,7 +62,7 @@ function crearFila(medico, fila) {
   </td>
   <td>${medico.precio}</td>
   <td>
-    <button class="btn btn-warning" onclick="EditarMedico('${medico.matricula}')">
+    <button class="btn btn-warning" onclick="prepararMedico('${medico.matricula}')">
       <i class="bi bi-pencil-square"></i>
     </button>
     <button class="btn btn-danger" onclick="borrarMedico('${medico.matricula}')">
@@ -74,9 +72,6 @@ function crearFila(medico, fila) {
 </tr>`;
 }
 
-
-
-//funciones
 function desplegarModalMedico() {
   modalMedico.show();
 }
@@ -106,7 +101,7 @@ function limpiarForm() {
 function crearMedico() {
   const resumen = resumenValidaciones(
     nombre.value,
-    resenia.value,
+    descripcion.value,
     especialidad.value,
     fotografia.value,
     horario.value,
@@ -123,7 +118,7 @@ function crearMedico() {
       fotografia.value,
       horario.value,
       precio.value,
-      resenia.value
+      descripcion.value
     );
 
     listaMedicos.push(medicoNuevo);
@@ -159,8 +154,7 @@ window.borrarMedico = (matricula) => {
         (medico) => medico.matricula === matricula
       );
       listaMedicos.splice(posicionMedico, 1);
-      guardarEnLocalStorage(); //actualizamos localStorage
-      //empiezo a borrar la fila de la tabla
+      guardarEnLocalStorage(); 
       tablaMedico.removeChild(tablaMedico.children[posicionMedico]);
       actualizarIndicesFilas();      
       Swal.fire(
@@ -173,16 +167,27 @@ window.borrarMedico = (matricula) => {
 };
 
 function actualizarIndicesFilas() {
-  // Obtener la tabla de películas
+
   let tablaMedico = document.getElementById("tablaMedico");
-  // Obtener todas las filas de la tabla
+
   let filas = tablaMedico.getElementsByTagName("tr");
 
-  // Recorrer cada fila de la tabla
   for (let i = 0; i < filas.length; i++) {
-    // Calcular el nuevo índice sumando 1 al índice actual
     let indice = i + 1;
-    // Obtener el elemento <th> de la fila actual y actualizar su contenido con el nuevo índice
     filas[i].getElementsByTagName("th")[0].textContent = indice;
   }
+}
+
+window.prepararMedico = (matriculaMedico) => {
+  const medicoElegido = listaMedicos.find((medico)=> medico.matricula === matriculaMedico);
+
+  matricula.value = medicoElegido.matricula;
+  nombre.value = medicoElegido.nombre;
+  especialidad.value = medicoElegido.especialidad;
+  fotografia.value = medicoElegido.fotografia;
+  horario.value = medicoElegido.horario;
+  precio.value = medicoElegido.precio;
+  descripcion.value = medicoElegido.descripcion;
+
+  modalMedico.show();
 }
