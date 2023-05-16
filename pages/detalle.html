@@ -20,8 +20,8 @@
   <body>
     <header></header>
     <main>
-      <section class="container py-3">
-        <div class="row">
+      <section class="container py-3" id="seccionCardDetalle">
+        <!-- <div class="row">
           <div class="col-12 col-md-3 col-lg-3">
             <img
               src="/img/1 cortada.jpeg"
@@ -49,7 +49,7 @@
               >
             </p>
           </div>
-        </div>
+        </div> -->
       </section>
       <section class="container my-3" id="contenedorFormSolicitarTurno">
         <form class="row justify-content-around text-start">
@@ -99,13 +99,11 @@
               id="inputHorario"
             >
               <option selected>Elija un horario</option>
-              <option value="1">15:00</option>
-              <option value="2">15:30</option>
-              <option value="3">16:00</option>
-              <option value="4">16:30</option>
-              <option value="5">17:00</option>
-              <option value="6">17:30</option>
-              <option value="7">18:00</option>
+              <option value="1">15:00 - 15:30 - 16:00</option>
+              <option value="2">16:00 - 16:30 - 17:00</option>
+              <option value="3">17:00 - 17:30 - 18:00</option>
+              <option value="4">18:00 - 18:30 - 19:00</option>
+            
             </select>
           </div>
           <div class="col-10 col-md-6 col-lg-6 text-center py-2">
@@ -119,8 +117,8 @@
         <div class="container py-3 text-center">
           <h2 class="text-start">Reseñas de pacientes</h2>
           <hr />
-          <div class="row justify-content-evenly">
-            <div class="card col-11 col-md-3 col-lg-3 m-2">
+          <div class="row justify-content-evenly" id="cardResenia">
+            <!-- <div class="card col-11 col-md-3 col-lg-3 m-2">
               <div class="card-body">
                 <h5 class="card-title">Nombre Paciente</h5>
                 <p class="card-text">
@@ -173,13 +171,12 @@
                   the bulk of the card's content.
                 </p>
               </div>
-            </div>
+            </div> -->
           </div>
           <button
             type="button"
             class="btn btn-outline-info my-3"
-            data-bs-toggle="modal"
-            data-bs-target="#modalReseña"
+            id="btnResenia"
           >
             Dejar una reseña
           </button>
@@ -187,7 +184,7 @@
       </section>
       <div
         class="modal fade"
-        id="modalReseña"
+        id="modalResenia"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
@@ -206,7 +203,7 @@
               ></button>
             </div>
             <div class="modal-body">
-              <form class="text-start">
+              <form class="text-start" id="formResenia">
                 <div class="mb-3">
                   <label for="inputNombreReseña" class="form-label"
                     >Nombre completo</label
@@ -214,7 +211,7 @@
                   <input
                     type="text"
                     class="form-control"
-                    id="inputNombreReseña"
+                    id="inputNombreResenia"
                     placeholder="Ej: Malena Avila"
                   />
                 </div>
@@ -225,10 +222,11 @@
                   >
                   <textarea
                     class="form-control"
-                    id="textoReseña"
+                    id="textoResenia"
                     rows="3"
                   ></textarea>
                 </div>
+                <div class="alert alert-danger mt-3 d-none" role="alert" id="alertaResenia"></div>
                 <div>
                   <button class="btn btn-outline-warning" type="submit">
                     Enviar
@@ -246,5 +244,6 @@
       integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
       crossorigin="anonymous"
     ></script>
+    <script src="../js/detalle.js" type="module"></script>
   </body>
 </html>

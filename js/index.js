@@ -75,7 +75,11 @@ function crearCard (medico) {
 	  </div>
 	</div>
 	<div class="card-footer p-3">
-	  <a href="/pages/detalle.html" class="btn btn-outline-warning">Ver Mas</a>
+	  <button class="btn btn-outline-warning" onclick="navegarPaginaDetalle('${medico.matricula}')">Ver Mas</=>
 	</div>
   </div>`
+}
+function navegarPaginaDetalle(matricula){
+    console.log(matricula);
+    window.location.href = window.location.origin+'/pages/detalle.html?matricula='+matricula;
 }
