@@ -7,3 +7,6 @@ body {
     background-color: #FFF1BB;
     border: 3px solid ;
 }
+td {
+    max-width: 20px;
+  }
