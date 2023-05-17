@@ -121,10 +121,9 @@ seccionCardDetalle.innerHTML = `<div class="row">
 </div>
 <div class="col-12 col-md-9 col-lg-9 row">
   <div>
-    <h2 class="card-title col-12 align-self-start">
-      ${detalleMedico.nombre}
-    </h2>
+    <h2 class="card-title col-12 align-self-start">${detalleMedico.nombre}</h2>
     <h5 class="col-12 align-self-start">${detalleMedico.especialidad}</h5>
+    <h5 class="col-12 align-self-start">Matricula: ${detalleMedico.matricula}</h5>
   </div>
   <p class="card-text col-12 align-self-center">
     ${detalleMedico.descripcion}
