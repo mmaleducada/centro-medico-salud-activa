@@ -9,7 +9,6 @@ const formularioLogin = document.querySelector("#formLogin");
 
 btnIniciarSesion.addEventListener("click", desplegarModalLogin);
 btnLogin.addEventListener("submit", login);
-btnIniciarSesion.addEventListener("click", logout);
 
 const usuarioAdmin = {
     email: "admin@cmsaludactiva.com",
