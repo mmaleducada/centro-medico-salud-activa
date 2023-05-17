@@ -6,6 +6,7 @@
 
 main{
     background-color: #FFF1BB;
+    min-height: 100%;
 }
 #backgroundBotones{ 
     background-color:#fcfaee ;

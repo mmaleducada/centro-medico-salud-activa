@@ -8,6 +8,7 @@
 nav {
   background-color: #fff1bb;
   box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.3);
+  font-size: large;
 }
 #navbarPrincipalLabel,
 #navbarPrincipal {
@@ -15,9 +16,13 @@ nav {
 }
 .btn-mellow {
   background-color: #fff1bb;
+  font-size: medium;
+ 
 }
 .btn-yellow {
   background-color: #fac393;
+  font-size: medium;
+  margin: 10px;
 }
 .btn-yellow:hover {
   background-color: black;
@@ -90,7 +95,12 @@ nav {
     line-height: 65px;
   }
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 775px) {
+  #botonNavResponsive{
+    min-width: 85%;
+  }
+}
+@media screen and (min-width: 765px) {
   main {
     margin-top: 60px;
   }
@@ -99,7 +109,9 @@ nav {
     height: 35px;
   }
   #botonNavResponsive{
-    width: 76%;
+    width: 70%;
+    max-width: 76%;
+    min-width: 30%;
   }
 }
 @media screen and (max-width: 800px) {
