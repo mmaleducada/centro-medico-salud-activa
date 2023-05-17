@@ -54,8 +54,8 @@ export function resumenValidaciones(nombre, resenia, especialidad, fotografia, h
     if(!validarTexto(nombre, 3, 100)){
         resumen = "El nombre debe contener entre 3 y 100 caracteres <br>";
     }
-    if(!validarTexto(resenia, 3, 100)){
-        resumen = "El nombre debe contener entre 3 y 100 caracteres <br>";
+    if(!validarTexto(resenia, 3, 500)){
+        resumen = "La descripcion contener entre 3 y 500 caracteres <br>";
     }
     if(!validarEspecialidad(especialidad)){
         resumen += "Debe seleccionar una especialidad <br>";
