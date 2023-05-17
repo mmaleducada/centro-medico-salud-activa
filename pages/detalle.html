@@ -197,6 +197,7 @@
               class="form-control"
               id="inputNombrePaciente"
               placeholder="Ej: Malena"
+              required
             />
           </div>
           <div class="col-12 col-md-4 col-lg-4 py-2">
@@ -208,6 +209,7 @@
               class="form-control"
               id="inputApellidoPaciente"
               placeholder="Ej: Avila"
+              required
             />
           </div>
           <div class="col-12 col-md-4 col-lg-4 py-2">
@@ -219,11 +221,12 @@
               class="form-control"
               id="inputEmailPaciente"
               placeholder="Ej: malena@ejemplo.com"
+              required
             />
           </div>
           <div class="col-12 col-md-6 col-lg-6 py-2">
             <label for="" class="form-label">Fecha</label>
-            <input id="fechaTurno" type="date" class="form-control" />
+            <input id="fechaTurno" type="date" class="form-control" required />
             <div id="fechaTurno__feedback" class="invalid-feedback">
               Por favor, seleccione una fecha
             </div>
@@ -234,6 +237,7 @@
               class="form-select"
               aria-label="Default select example"
               id="inputHorario"
+              required
             >
               <option selected>Elija un horario</option>
               <option value="1">15:00 - 15:30 - 16:00</option>
@@ -294,6 +298,7 @@
                     class="form-control"
                     id="inputNombreResenia"
                     placeholder="Ej: Malena Avila"
+                    required
                   />
                 </div>
                 <div class="mb-3">
@@ -305,6 +310,7 @@
                     class="form-control"
                     id="textoResenia"
                     rows="3"
+                    required
                   ></textarea>
                 </div>
                 <div
