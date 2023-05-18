@@ -1,7 +1,21 @@
 import Medico from "./class.js";
 import { resumenValidaciones } from "./helpers.js";
 
-//variables globales
+
+// if (sessionStorage.getItem('adminLog') !== null) {
+//   // btnIniciarSesion.classList.add('d-none');
+//   // btnSalir.classList.remove('d-none');
+//   // linkAdministrador.classList.remove('d-none');  
+// }
+
+if (sessionStorage.getItem('adminLog') === null){
+  const listadoMedicos = document.querySelector("main")
+  listadoMedicos.innerHTML = `<div class="text-center"><h3 class=".fs-1 text m-5">Debe loguearse como admin</h3>
+  <a href="../index.html"><button type="button" class="btn btn-light text-center mb-5">Volver a Inicio</button></a>
+</div>`;
+} else {
+  
+  //variables globales
 let formularioMedico = document.getElementById("form-medico");
 let modalMedico = new bootstrap.Modal(
   document.getElementById("modalMedicosAdmi")
@@ -17,9 +31,12 @@ let precio = document.getElementById("inputPrecio");
 let mensajeAlerta = document.getElementById("alerta");
 let altaDeMedico = true; // esta variable le permite al formulario saber que tiene que hacer. Si la variable esta en TRUE, debe crear un nuevo medico en la fila. Si esta en FALSE, debe editar el medico elegido.
 
+
 //manejadores de eventos
 btnModalMedico.addEventListener("click", desplegarModalMedico);
 formularioMedico.addEventListener("submit", prepararFormularioMedico);
+
+
 
 
 let listaMedicos = JSON.parse(localStorage.getItem("listaMedicos")) || [];
@@ -240,4 +257,6 @@ function editarMedico() {
     limpiarForm();
     modalMedico.hide();
   }
+}
+
 }

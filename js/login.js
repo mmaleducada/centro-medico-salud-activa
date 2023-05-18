@@ -17,7 +17,7 @@ const usuarioAdmin = {
 
 let admin = false;
 
-if (sessionStorage.getItem('logueado') !== null) {
+if (sessionStorage.getItem('adminLog') !== null) {
 	btnIniciarSesion.classList.add('d-none');
 	btnSalir.classList.remove('d-none');
 	linkAdministrador.classList.remove('d-none');

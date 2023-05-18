@@ -5,6 +5,12 @@ let listaMedicos = JSON.parse(localStorage.getItem("listaMedicos")) || [];
 
 filtro.addEventListener('change', filtrador);
 
+if (sessionStorage.getItem('adminLog') !== null) {
+	btnIniciarSesion.classList.add('d-none');
+	btnSalir.classList.remove('d-none');
+	linkAdministrador.classList.remove('d-none');
+}
+
 function filtrador() {
 	const medicosFiltrados = document.querySelectorAll('.cardMedico');
 
