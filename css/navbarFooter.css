@@ -86,6 +86,12 @@ nav {
 .pie-pagina .grupo-2 small {
   font-size: 15px;
 }
+
+#color-fondo-error {
+  background-color: #ffbc01;
+}
+
+
 @media screen and (min-width: 800px) {
   .pie-pagina .grupo-1 .red-social a {
     width: 65px;
