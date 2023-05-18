@@ -2,11 +2,6 @@ import Medico from "./class.js";
 import { resumenValidaciones } from "./helpers.js";
 
 
-// if (sessionStorage.getItem('adminLog') !== null) {
-//   // btnIniciarSesion.classList.add('d-none');
-//   // btnSalir.classList.remove('d-none');
-//   // linkAdministrador.classList.remove('d-none');  
-// }
 
 if (sessionStorage.getItem('adminLog') === null){
   const listadoMedicos = document.querySelector("main")

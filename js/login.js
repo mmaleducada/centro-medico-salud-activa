@@ -42,7 +42,21 @@ function verificarUsuario() {
 	const contraseniaAdmin = datosAdmin.password;
 
 	if (email.value.match(expRegCorreo) === null || password.value.match(expRegContrasenia) === null) {
-		Swal.fire('Correo y/o contraseña Invalido');
+		Swal.fire({
+			icon: 'error',
+			title: 'Lo siento',
+			text: 'Usuario y/o contraseña invalida',
+			width: 600,
+			padding: '3em',
+			color: '#716add',
+			background: '#fff url(/images/trees.png)',
+			backdrop: `
+			  rgba(0,0,123,0.4)
+			  url("https://sweetalert2.github.io/images/nyan-cat.gif")
+			  left top
+			  no-repeat
+			`
+		  })
 		formularioLogin.reset()
 	} else {
 		if (email.value === correoAdmin && password.value === contraseniaAdmin) {
@@ -52,8 +66,19 @@ function verificarUsuario() {
 			btnSalir.classList.remove('d-none');
 			btnIniciarSesion.classList.add('d-none');
 			modalLogin.hide();
+			Swal.fire({
+				icon: 'success',
+				title: 'Usuario administrador',
+				showConfirmButton: false,
+				timer: 1800
+			})
 		} else {
-			Swal.fire('Ingreso usuario normal');
+			Swal.fire({
+				icon: 'success',
+				title: 'Usuario paciente',
+				showConfirmButton: false,
+				timer: 1800
+			  })
 			modalLogin.hide();
 			btnIniciarSesion.classList.add('d-none');
 			btnSalir.classList.remove('d-none');
