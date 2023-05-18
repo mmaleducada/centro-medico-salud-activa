@@ -1,59 +1,103 @@
 const modalLogin = new bootstrap.Modal(document.querySelector("#modalLogin"));
-const btnIniciarSesion = document.querySelector("#btnIniciarSesion")
+const btnIniciarSesion = document.querySelector("#btnIniciarSesion");
+const btnSalir = document.querySelector("#btnSalir");
 const btnLogin = document.querySelector("#btnLogin");
-const formularioLogin = document.querySelector("#formLogin");
+/* const btnAdmin = document.querySelector("#btnAdmin"); */
 const email = document.querySelector("#email");
 const password = document.querySelector("#pass");
-const alert = document.querySelector("#alert");
+/* const alerta = document.querySelector("#alerta"); */
+const formularioLogin = document.querySelector("#formLogin");
+const linkAdministrador = document.querySelector('#linkAdministrador');
 
-btnIniciarSesion.addEventListener("click", desplegarModalLogin);
-formularioLogin.addEventListener("submit", login);
+const expRegCorreo = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
+const expRegContrasenia = /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/;
+
 const usuarioAdmin = {
-    email: "admin@cmsaludactiva.com",
-    password: "12345678Aa!",
-};
+	email: "admin@cmsaludactiva.com",
+	password: "Admin123!"
+}
+
+let admin = false;
+
+if (sessionStorage.getItem('logueado') !== null) {
+	btnIniciarSesion.classList.add('d-none');
+	btnSalir.classList.remove('d-none');
+	linkAdministrador.classList.remove('d-none');
+	/* Ocultar el main */
+} else {
+	/* toda la logica del administrador */
+}
 
 sessionStorage.setItem("user", JSON.stringify(usuarioAdmin));
-verificarUser();
+/* verificarUser(); */
 
-function verificarUser(){
-    let existeUsuario = sessionStorage.getItem("user");
-    if (existeUsuario === usuarioAdmin) {
-        btnIniciarSesion.innerHTML = "Salir";
-        document.querySelector("#btnAdmin").classList.remove("d-none");
-    }else {
-        btnIniciarSesion.innerHTML = "Iniciar Sesión";
-        let webAdmin = window.location.origin + "/pages/administrador.html";
-    if (window.location.href === webAdmin){
-        document.querySelector("main").innerHTML = `<h2 class="text-center">No tienes permisos suficientes para estar en esta página, sera redireccionado a la página principal.</h2>`
-    }
-    }
+btnIniciarSesion.addEventListener("click", desplegarModalLogin);
+// btnLogin.addEventListener("submit", login);
+formularioLogin.addEventListener('submit', entrar);
+btnSalir.addEventListener('click', cerrarSesion)
+
+function entrar(e) {
+	e.preventDefault();
+	if (btnIniciarSesion.innerHTML === 'Iniciar Sesión') {
+		verificarUsuario();
+	};
+};
+
+function verificarUsuario() {
+	const datosAdmin = JSON.parse(sessionStorage.getItem('user'));
+	const correoAdmin = datosAdmin.email;
+	const contraseniaAdmin = datosAdmin.password;
+
+	if (email.value.match(expRegCorreo) === null || password.value.match(expRegContrasenia) === null) {
+		Swal.fire('Correo y/o contraseña Invalido');
+		formularioLogin.reset()
+	} else {
+		if (email.value === correoAdmin && password.value === contraseniaAdmin) {
+			admin = true;
+			sessionStorage.setItem('adminLog', JSON.stringify(admin))
+			linkAdministrador.classList.remove('d-none');
+			btnSalir.classList.remove('d-none');
+			btnIniciarSesion.classList.add('d-none');
+			modalLogin.hide();
+		} else {
+			Swal.fire('Ingreso usuario normal');
+			modalLogin.hide();
+			btnIniciarSesion.classList.add('d-none');
+			btnSalir.classList.remove('d-none');
+		};
+	};
+};
+
+function cerrarSesion() {
+	sessionStorage = false;
+	sessionStorage.removeItem('adminLog');
+	linkAdministrador.classList.add('d-none');
+	btnSalir.classList.add('d-none');
+	btnIniciarSesion.classList.remove('d-none');
 }
 
-function desplegarModalLogin(){
-    if (btnIniciarSesion.innerHTML === "Iniciar Sesión"){
-        modalLogin.show();
-    } else {
-        logout();
-    }
+
+function verificarUser() {
+	let existeUsuario = sessionStorage.getItem("user");
+	if (existeUsuario) {
+		btnIniciarSesion.innerHTML = "Salir";
+		/* btnAdmin.classList.remove("d-none"); */
+		// TODO agregar validaciones
+	} else {
+		btnIniciarSesion.innerHTML = "Iniciar Sesión";
+		let webAdmin = window.location.origin + "/pages/administrador.html";
+		if (window.location.href === webAdmin) {
+			document.querySelector("main").innerHTML = `<h2 class="text-center bg-dark text-light">No tienes permisos suficientes para estar en esta página, sera redireccionado a la página principal.</h2>`
+		}
+		setTimeout(() => {
+			window.location.href = window.location.origin;
+		}, 3000)
+	}
 }
 
-function login(e){
-    e.preventDefault();
-
-    if (email.value === usuarioAdmin.value && password.value === usuarioAdmin.password) {
-        alert.className = "alert alert-danger mt-3 d-none";
-        btnIniciarSesion.innerHTML = "Salir";
-        sessionStorage.setItem("user", JSON.stringify(usuarioAdmin));
-        document.querySelector("#btnAdmin").classList.remove("d-none");
-        modalLogin.hide();
-    } else {
-    }
-}
-
-function logout(){
-    sessionStorage.removeItem("user");
-    btnIniciarSesion.innerHTML = "Iniciar Sesión";
-    document.querySelector("#btnAdmin").classList.add("d-none");
-window.location.href = window.location.origin;
+function desplegarModalLogin() {
+	if (btnIniciarSesion.innerHTML === "Iniciar Sesión") {
+		formularioLogin.reset();
+		/* modalLogin.show(); */
+	}
 }
