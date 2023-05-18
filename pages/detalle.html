@@ -99,7 +99,7 @@
   <main>
     <section class="container py-5" id="seccionCardDetalle"></section>
     <section class="container my-3" id="contenedorFormSolicitarTurno">
-      <form class="row justify-content-around text-start">
+      <form class="row justify-content-around text-start" id="form-solicitar-turno">
         <div class="col-12 col-md-4 col-lg-4 py-2">
           <label for="inputNombrePaciente" class="form-label">Nombre</label>
           <input type="text" class="form-control" id="inputNombrePaciente" placeholder="Ej: Malena" required />
@@ -131,7 +131,7 @@
           </select>
         </div>
         <div class="col-10 col-md-6 col-lg-6 text-center py-2">
-          <button href="./error404.html" class="btn btn-warning">
+          <button class="btn btn-warning" type="submit" id="btn-solicitar-turno">
             Solicitar turno
           </button>
         </div>
