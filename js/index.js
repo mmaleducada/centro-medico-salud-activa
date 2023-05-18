@@ -11,6 +11,11 @@ if (sessionStorage.getItem('adminLog') !== null) {
 	linkAdministrador.classList.remove('d-none');
 }
 
+if (sessionStorage.getItem('pacienteLog') !== null) {
+	btnIniciarSesion.classList.add('d-none');
+	btnSalir.classList.remove('d-none');
+}
+
 function filtrador() {
 	const medicosFiltrados = document.querySelectorAll('.cardMedico');
 

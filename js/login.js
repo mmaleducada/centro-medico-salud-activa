@@ -16,6 +16,7 @@ const usuarioAdmin = {
 }
 
 let admin = false;
+let paciente = false;
 
 if (sessionStorage.getItem('adminLog') !== null) {
 	btnIniciarSesion.classList.add('d-none');
@@ -73,6 +74,8 @@ function verificarUsuario() {
 				timer: 1800
 			})
 		} else {
+			paciente = true;
+			sessionStorage.setItem('pacienteLog', JSON.stringify(paciente))
 			Swal.fire({
 				icon: 'success',
 				title: 'Usuario paciente',
@@ -89,6 +92,7 @@ function verificarUsuario() {
 function cerrarSesion() {
 	sessionStorage = false;
 	sessionStorage.removeItem('adminLog');
+	sessionStorage.removeItem('pacienteLog');
 	linkAdministrador.classList.add('d-none');
 	btnSalir.classList.add('d-none');
 	btnIniciarSesion.classList.remove('d-none');
