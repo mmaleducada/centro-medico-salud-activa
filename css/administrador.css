@@ -1,9 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap');
+
+* {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
 body {
-    background-color: #fed437;
-    overflow-x: hidden;
+  background-color: #fed437;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 #seccion-titulo-administrador {
-    background-color: #FFF1BB;
-    border: 3px solid ;
+  background-color: #fff1bb;
+  border: 3px solid;
+}
+td {
+  max-width: 20px;
+}
+
+main {
+  flex-grow: 1;
+}
+
+@media (min-width: 200px) and (max-width: 991px) {
+  main {
+    margin-top: 90px;
+  }
 }

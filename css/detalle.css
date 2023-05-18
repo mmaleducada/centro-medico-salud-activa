@@ -1,30 +1,50 @@
-*{
-    margin: 0;
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 #imagenDoctor {
-    width: 100%;
+  width: 100%;
 }
 
 main {
-    background-color: #f5f3e4;
+  background-color: #f5f3e4;
 }
 
 #colorFondoCard {
-    background-color: #f5f3e4;
+  background-color: #f5f3e4;
 }
 
 #contenedorFormSolicitarTurno {
-    background-color: white;
-    border: solid 1px black;
-    
+  background-color: white;
+  border: solid 1px black;
 }
 
 #reseñasPacientes {
-    background-color: #ecfafb;
+  background-color: #ecfafb;
+}
+
+@media (min-width: 200px) and (max-width: 767.98px) {
+  main {
+    margin-top: 90px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+  main {
+    margin-top: 110px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+  main {
+    margin-top: 120px;
+  }
 }

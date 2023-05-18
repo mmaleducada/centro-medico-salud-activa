@@ -1,13 +1,66 @@
-#imagencarousel{
-    width: 1000px;
-    height: 800px;
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300&display=swap');
+
+* {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.imagencarousel {
+    width: 100vw;
+    max-height: 80vh;
     object-fit: cover;
 }
 
 main{
     background-color: #FFF1BB;
-    margin-top: 100px;
+    min-height: 100%;
+    
 }
+
+.contenedorImgEspecialidades {
+    background-color: #F5F0E2;
+}
+
+.descripcionCardNovedades {
+    min-height: 70px;
+}
+
+.contenedorBuscador {
+    max-width: 600px;
+}
+
+.contenedorCardsMedicos {
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.cardMedico {
+    max-width: 250px;
+    flex-wrap: wrap;
+}
+
+.imagenMedico {
+    max-height: 200px;
+    max-width: 250px;
+    object-fit: cover;
+}
+
+.card:hover {
+    transition: .1s;
+    transform: scale(1.005);
+}
+
+.oculto,
+.imgOculta,
+.escondido {
+    display: none;
+}
+
+#imagenDoctorNoEncontrado {
+    max-width: 90%;
+    border-radius: 15px;
+}
+
+
 #backgroundBotones{ 
     background-color:#fcfaee ;
 }
@@ -26,39 +79,13 @@ main{
     background-color:#fcfaee;
 }
 
-#tamaño-card-novedades {
-    width: 18rem;
-}
+
 
 #color-container-novedades {
     background-color: white;
 }
 
-
-@media (min-width: 200px) and (max-width:767px) {
-    iframe {
-        width: 300px;
-        height: 300px;
-    }
+#medios-contacto {
+    background-color: #fb8c54;
 }
 
-@media (min-width: 768px) and (max-width:991px) {
-    iframe {
-        width: 360px;
-        height: 300px;
-    }
-}
-
-@media (min-width: 992px) and (max-width:1200px) {
-    iframe {
-        width: 500px;
-        height: 300px;
-    }
-}
-
-@media (min-width: 1201px) and (max-width:1400px) {
-    iframe {
-        width: 600px;
-        height: 300px;
-    }
-}
