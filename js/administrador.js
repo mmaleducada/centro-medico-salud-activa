@@ -1,7 +1,21 @@
 import Medico from "./class.js";
 import { resumenValidaciones } from "./helpers.js";
 
-//variables globales
+
+// if (sessionStorage.getItem('adminLog') !== null) {
+//   // btnIniciarSesion.classList.add('d-none');
+//   // btnSalir.classList.remove('d-none');
+//   // linkAdministrador.classList.remove('d-none');  
+// }
+
+if (sessionStorage.getItem('adminLog') === null){
+  const listadoMedicos = document.querySelector("main")
+  listadoMedicos.innerHTML = `<div class="text-center"><h3 class=".fs-1 text m-5">Debe loguearse como admin</h3>
+  <a href="../index.html"><button type="button" class="btn btn-light text-center mb-5">Volver a Inicio</button></a>
+</div>`;
+} else {
+  
+  //variables globales
 let formularioMedico = document.getElementById("form-medico");
 let modalMedico = new bootstrap.Modal(
   document.getElementById("modalMedicosAdmi")
@@ -17,9 +31,12 @@ let precio = document.getElementById("inputPrecio");
 let mensajeAlerta = document.getElementById("alerta");
 let altaDeMedico = true; // esta variable le permite al formulario saber que tiene que hacer. Si la variable esta en TRUE, debe crear un nuevo medico en la fila. Si esta en FALSE, debe editar el medico elegido.
 
+
 //manejadores de eventos
 btnModalMedico.addEventListener("click", desplegarModalMedico);
 formularioMedico.addEventListener("submit", prepararFormularioMedico);
+
+
 
 
 let listaMedicos = JSON.parse(localStorage.getItem("listaMedicos")) || [];
@@ -39,13 +56,11 @@ if (listaMedicos.length > 0) {
   );
 }
 cargaInicial();
-console.log(listaMedicos);
 
 // funciones
 function cargaInicial() {
   if (listaMedicos.length > 0) {
     listaMedicos.map((medico, posicion) => crearFila(medico, posicion + 1));
-    console.log(listaMedicos);
   }
 }
 
@@ -145,7 +160,6 @@ function crearMedico() {
 }
 
 window.borrarMedico = (matricula) => {
-  console.log(matricula);
   Swal.fire({
     title: 'Estas seguro que deseas eliminar el Medico?',
     text: "Esta accion es irrevertible, estas seguro",
@@ -201,7 +215,6 @@ window.prepararMedico = (matriculaMedico) => {
 }
 
 function editarMedico() {
-  console.log("aqui tengo que editar");
   let lugarMedico2 = listaMedicos.findIndex((medico) => medico.matricula === matricula.value);
 
   const resumen = resumenValidaciones(
@@ -214,7 +227,6 @@ function editarMedico() {
   );
 
   mostrarMensajeError(resumen);
-// edito los valores
   if (resumen.length === 0){
     listaMedicos[lugarMedico2].nombre = nombre.value;
     listaMedicos[lugarMedico2].especialidad = especialidad.value;
@@ -222,11 +234,8 @@ function editarMedico() {
     listaMedicos[lugarMedico2].horario = horario.value;
     listaMedicos[lugarMedico2].precio = precio.value;
     listaMedicos[lugarMedico2].descripcion = descripcion.value;
-// actualizar localstorage
     guardarEnLocalStorage();
-// actualizar fila
     let tablaMedico = document.getElementById("tablaMedico");
-    console.log(tablaMedico.children[lugarMedico2]);
     let celdaNombre = (tablaMedico.children[lugarMedico2]).children[1].children[0];
     let celdaEspecialidad = (tablaMedico.children[lugarMedico2]).children[2];
     let celdaFotografia = (tablaMedico.children[lugarMedico2]).children[3].children[0];
@@ -245,8 +254,9 @@ function editarMedico() {
       "success"
     );
 
-    //limpio el formulario
     limpiarForm();
     modalMedico.hide();
   }
+}
+
 }
