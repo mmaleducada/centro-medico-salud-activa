@@ -41,7 +41,7 @@ function login(e){
         // }
 }
 function verificarUser(){
-    // sessionStorage.setItem("activo", JSON.stringify(true));
+    sessionStorage.setItem("activo", JSON.stringify(true));
     const datosAdmin = JSON.parse(sessionStorage.getItem("user"));
 	const correoAdmin = datosAdmin.email;
 	const contraseniaAdmin = datosAdmin.password;
