@@ -8,6 +8,7 @@ const password = document.querySelector("#pass");
 const alert = document.querySelector("#alerta");
 const formularioLogin = document.querySelector("#formLogin");
 const linkAdmin = document.querySelector("#linkAdmin");
+const usuarioActivo = "";
 // const expRegCorreo = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/;
 // const expRegContrasenia = /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/
 
@@ -20,6 +21,7 @@ formularioLogin.addEventListener("submit", login);
 btnSalir.addEventListener("click", logout);
 
 sessionStorage.setItem("user", JSON.stringify(usuarioAdmin));
+sessionStorage.setItem("activo", JSON.stringify(usuarioActivo));
 
 
 function desplegarModalLogin(){
@@ -39,10 +41,10 @@ function login(e){
         // }
 }
 function verificarUser(){
-    const datosAdmin = JSON.parse(sessionStorage.getItem('user'));
+    // sessionStorage.setItem("activo", JSON.stringify(true));
+    const datosAdmin = JSON.parse(sessionStorage.getItem("user"));
 	const correoAdmin = datosAdmin.email;
 	const contraseniaAdmin = datosAdmin.password;
-    sessionStorage.setItem("activo", JSON.stringify(true));
     
 	if (email.value === correoAdmin && password.value === contraseniaAdmin) {
         linkAdmin.classList.remove("d-none");
@@ -50,12 +52,13 @@ function verificarUser(){
         listaSalir.classList.remove("d-none");
 	}
     
-//     let existeUsuario = sessionStorage.getItem("activo" === true);
+    let existeUsuario = sessionStorage.getItem("activo", (true));
+    console.log(existeUsuario);
 //     if (existeUsuario) {
 // }
 }
 function logout(){
-        // sessionStorage.removeItem("user");
+    sessionStorage.removeItem("activo");
         btnIniciarSesion.classList.remove("d-none");
         listaSalir.classList.add("d-none");
         linkAdmin.classList.add("d-none");
