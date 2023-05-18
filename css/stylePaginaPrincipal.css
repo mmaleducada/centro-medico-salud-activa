@@ -31,6 +31,7 @@ main{
 .contenedorCardsMedicos {
     flex-wrap: wrap;
     gap: 20px;
+    max-width: 1600px;
 }
 
 .cardMedico {

@@ -8,10 +8,13 @@ let listaResenia = JSON.parse(localStorage.getItem("listaResenia")) || [];
 let paciente = document.getElementById("inputNombreResenia");
 let comentario = document.getElementById("textoResenia");
 let mensajeAlerta = document.getElementById("alertaResenia");
+let btnTurno = document.getElementById("btn-solicitar-turno");
+let formTurno = document.getElementById("form-solicitar-turno");
 
 //manejadores de eventos
 btnResenia.addEventListener("click", desplegarModalResenia);
 formResenia.addEventListener("submit", prepararFormResenia);
+formTurno.addEventListener("submit", detenerFormTurno);
 
 
 if (listaResenia.length > 0) {
@@ -130,3 +133,8 @@ seccionCardDetalle.innerHTML = `<div class="row">
 </div>
 </div>
 `
+
+function detenerFormTurno (e) {
+  e.preventDefault();
+  window.location.href = window.location.origin+"/pages/error404.html";
+}
