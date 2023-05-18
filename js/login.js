@@ -2,10 +2,8 @@ const modalLogin = new bootstrap.Modal(document.querySelector("#modalLogin"));
 const btnIniciarSesion = document.querySelector("#btnIniciarSesion");
 const btnSalir = document.querySelector("#btnSalir");
 const btnLogin = document.querySelector("#btnLogin");
-/* const btnAdmin = document.querySelector("#btnAdmin"); */
 const email = document.querySelector("#email");
 const password = document.querySelector("#pass");
-/* const alerta = document.querySelector("#alerta"); */
 const formularioLogin = document.querySelector("#formLogin");
 const linkAdministrador = document.querySelector('#linkAdministrador');
 
@@ -23,16 +21,11 @@ if (sessionStorage.getItem('logueado') !== null) {
 	btnIniciarSesion.classList.add('d-none');
 	btnSalir.classList.remove('d-none');
 	linkAdministrador.classList.remove('d-none');
-	/* Ocultar el main */
-} else {
-	/* toda la logica del administrador */
 }
 
 sessionStorage.setItem("user", JSON.stringify(usuarioAdmin));
-/* verificarUser(); */
 
 btnIniciarSesion.addEventListener("click", desplegarModalLogin);
-// btnLogin.addEventListener("submit", login);
 formularioLogin.addEventListener('submit', entrar);
 btnSalir.addEventListener('click', cerrarSesion)
 
@@ -76,28 +69,8 @@ function cerrarSesion() {
 	btnIniciarSesion.classList.remove('d-none');
 }
 
-
-function verificarUser() {
-	let existeUsuario = sessionStorage.getItem("user");
-	if (existeUsuario) {
-		btnIniciarSesion.innerHTML = "Salir";
-		/* btnAdmin.classList.remove("d-none"); */
-		// TODO agregar validaciones
-	} else {
-		btnIniciarSesion.innerHTML = "Iniciar Sesión";
-		let webAdmin = window.location.origin + "/pages/administrador.html";
-		if (window.location.href === webAdmin) {
-			document.querySelector("main").innerHTML = `<h2 class="text-center bg-dark text-light">No tienes permisos suficientes para estar en esta página, sera redireccionado a la página principal.</h2>`
-		}
-		setTimeout(() => {
-			window.location.href = window.location.origin;
-		}, 3000)
-	}
-}
-
 function desplegarModalLogin() {
 	if (btnIniciarSesion.innerHTML === "Iniciar Sesión") {
 		formularioLogin.reset();
-		/* modalLogin.show(); */
 	}
 }

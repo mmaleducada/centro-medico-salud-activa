@@ -13,21 +13,20 @@ let mensajeAlerta = document.getElementById("alertaResenia");
 btnResenia.addEventListener("click", desplegarModalResenia);
 formResenia.addEventListener("submit", prepararFormResenia);
 
-///////////////////////////////
+
 if (listaResenia.length > 0) {
   listaResenia = listaResenia.map(
     (resenia) => new Resenia(resenia.paciente, resenia.comentario)
   );
 }
-/////////////////////////////////
+
 cargaInit();
 function cargaInit() {
   if (listaResenia.length > 0) {
     listaResenia.map((resenia, posicion) => crearCard(resenia, posicion + 1));
-    console.log(listaResenia);
   }
 }
-////////////////////////////////
+
 function crearCard(resenia, card) {
   let cardResenia = document.getElementById("cardResenia");
   cardResenia.innerHTML += `<div class="card col-11 col-md-3 col-lg-3 m-2">
@@ -39,7 +38,6 @@ function crearCard(resenia, card) {
     </div>
   </div>`;
 }
-//////////////////////////////
 
 //funciones
 function desplegarModalResenia() {
@@ -54,10 +52,8 @@ function prepararFormResenia(e) {
 //validadores
 function validarTexto(texto, min, max) {
   if (texto.length >= min && texto.length <= max) {
-    console.log("la palabra es valida");
     return true;
   } else {
-    console.log("la palabra es incorrecta");
     return false;
   }
 }
@@ -102,10 +98,8 @@ function limpiarFormulario() {
   formResenia.reset();
   modalResenia.hide();
 }
-//LOGICA PARA LA CARD DEL MEDICO
 
 const parametroURL = new URLSearchParams(window.location.search);
-console.log(parametroURL.get('matricula'));
 let listaMedicos = JSON.parse(localStorage.getItem("listaMedicos")) || [];
 
 const detalleMedico = listaMedicos.find((medico)=>medico.matricula === parametroURL.get('matricula'));

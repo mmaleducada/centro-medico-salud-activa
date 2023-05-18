@@ -39,13 +39,11 @@ if (listaMedicos.length > 0) {
   );
 }
 cargaInicial();
-console.log(listaMedicos);
 
 // funciones
 function cargaInicial() {
   if (listaMedicos.length > 0) {
     listaMedicos.map((medico, posicion) => crearFila(medico, posicion + 1));
-    console.log(listaMedicos);
   }
 }
 
@@ -145,7 +143,6 @@ function crearMedico() {
 }
 
 window.borrarMedico = (matricula) => {
-  console.log(matricula);
   Swal.fire({
     title: 'Estas seguro que deseas eliminar el Medico?',
     text: "Esta accion es irrevertible, estas seguro",
@@ -201,7 +198,6 @@ window.prepararMedico = (matriculaMedico) => {
 }
 
 function editarMedico() {
-  console.log("aqui tengo que editar");
   let lugarMedico2 = listaMedicos.findIndex((medico) => medico.matricula === matricula.value);
 
   const resumen = resumenValidaciones(
@@ -214,7 +210,6 @@ function editarMedico() {
   );
 
   mostrarMensajeError(resumen);
-// edito los valores
   if (resumen.length === 0){
     listaMedicos[lugarMedico2].nombre = nombre.value;
     listaMedicos[lugarMedico2].especialidad = especialidad.value;
@@ -222,11 +217,8 @@ function editarMedico() {
     listaMedicos[lugarMedico2].horario = horario.value;
     listaMedicos[lugarMedico2].precio = precio.value;
     listaMedicos[lugarMedico2].descripcion = descripcion.value;
-// actualizar localstorage
     guardarEnLocalStorage();
-// actualizar fila
     let tablaMedico = document.getElementById("tablaMedico");
-    console.log(tablaMedico.children[lugarMedico2]);
     let celdaNombre = (tablaMedico.children[lugarMedico2]).children[1].children[0];
     let celdaEspecialidad = (tablaMedico.children[lugarMedico2]).children[2];
     let celdaFotografia = (tablaMedico.children[lugarMedico2]).children[3].children[0];
@@ -245,7 +237,6 @@ function editarMedico() {
       "success"
     );
 
-    //limpio el formulario
     limpiarForm();
     modalMedico.hide();
   }

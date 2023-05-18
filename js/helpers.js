@@ -1,19 +1,15 @@
 function validarTexto(texto, min, max) {
     if (texto.length >= min && texto.length <= max) {
-        console.log("la palabra es valida");
         return true;
     } else {
-        console.log("la palabra es incorrecta");
         return false;
     }
 }
 
 function validarEspecialidad (especialidad){
     if(especialidad.length > 0 && especialidad === "Cardiologia" || especialidad === "Ginecologia" || especialidad === "Neurologia" || especialidad === "Traumatologia" || especialidad === "Oncologia" || especialidad === "Psiquiatria"){
-        console.log("Selecciono una especialidad correctamente");
         return true;
     } else {
-        console.log("No selecciono ninguna especialidad de la lista");
         return false;
     }
 }
@@ -21,10 +17,8 @@ function validarEspecialidad (especialidad){
 function validarFotografia(fotografia) {
     const patron = /^(http(s?):)([/|.|\w|\s|-])*.(?:jpg|gif|png)$/;
     if(patron.test(fotografia)){
-        console.log("La url de la fotografía es valida");
         return true;
     } else {
-        console.log("La url de la fotografía es invalida");
         return false;
     }
 }
@@ -32,19 +26,15 @@ function validarFotografia(fotografia) {
 
 function validarPrecio(precio2, min, max) {  
     if (precio2 >= min && precio2 <= max) {
-        console.log("El precio está dentro del rango válido")
         return true;
     } else {
-        console.log("El precio no está dentro del rango válido")
     }
 }
 
 function validarHorario(horario) {
     if(horario.length > 0 && horario === "15:00 - 15:30 - 16:00" || horario === "16:00 - 16:30 - 17:00" || horario === "17:00 - 17:30 - 18:00" || horario === "18:00 - 18:30 - 19:00"){
-        console.log("Selecciono una horario correctamente");
         return true;
     } else {
-        console.log("No selecciono ninguna horario de la lista");
         return false;
     }
 }
