@@ -91,6 +91,10 @@ nav {
   background-color: #ffbc01;
 }
 
+#posicion-imagen-error {
+  margin-top: 90px;
+}
+
 
 @media screen and (min-width: 800px) {
   .pie-pagina .grupo-1 .red-social a {
@@ -117,6 +121,7 @@ nav {
     max-width: 76%;
     min-width: 30%;
   }
+
 }
 @media screen and (max-width: 800px) {
   .pie-pagina .grupo-1 {
